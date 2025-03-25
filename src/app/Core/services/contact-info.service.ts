@@ -7,7 +7,7 @@ export class ContactInfoService {
 
    // Declare global variables
    email: string = "mrdbrainstech@hotmail.com";
-   phoneNo: string = "+91 (968) 240 1266";
+   phoneNo: string = "+91 955-593-7114";
  
    constructor() { }
 }
