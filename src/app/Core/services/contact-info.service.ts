@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 export class ContactInfoService {
 
    // Declare global variables
-   email: string = "seth99vikas@gmail.com";
+   email: string = "mrdbrainstech@hotmail.com";
    phoneNo: string = "+91 (968) 240 1266";
  
    constructor() { }
