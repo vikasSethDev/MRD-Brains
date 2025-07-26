@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>MrD Brains Technology</title>
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+
+    <!-- Favicons -->
+    <link href="assets/img/favicon.png" rel="icon">
+    <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
+
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com" rel="preconnect">
+    <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+
+    <!-- Vendor CSS Files -->
+    <link href="assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+
+    <!-- Main CSS File -->
+    <link href="assets/css/main.css" rel="stylesheet">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.7;
+            margin: 0;
+            padding: 0;
+        }
+
+        section {
+            padding: 24px 0;
+        }
+
+        pre {
+            background-color: #f4f4f4;
+            padding: 12px;
+            border-radius: 4px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, Menlo, Monaco, monospace;
+        }
+
+        h1,
+        h2,
+        h3,
+        h4 {
+            color: #003569;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 24px;
+        }
+
+        ul,
+        ol {
+            padding-left: 2em;
+        }
+
+        a {
+            color: #2b2bce;
+        }
+
+        .alert {
+            background: #f9fbcc;
+            border-left: 4px solid #f4d42e;
+            padding: 1em;
+        }
+
+        .note {
+            background: #eef5fa;
+            border-left: 4px solid #4ca3e4;
+            padding: 1em;
+        }
+
+        hr {
+            border: none;
+            border-top: 1px solid #ccc;
+            margin: 2em 0;
+        }
+    </style>
+
+</head>
+
+<body class="index-page">
+
+    <header id="header" class="header d-flex align-items-center sticky-top">
+        <div class="container-fluid container-xl position-relative d-flex align-items-center">
+
+            <a href="index.html" class="logo d-flex align-items-center me-auto">
+                <img src="assets/img/logo-1.png" alt="">
+                <!-- <span> Mr</span>
+        <h1 class="sitename">D Brains </h1> -->
+
+            </a>
+
+            <nav id="navmenu" class="navmenu">
+                <ul>
+                    <li><a href="#hero" class="active">Home<br></a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#team">Team</a></li>
+
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+                <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
+            </nav>
+
+            <a class="btn-getstarted" href="index.html#contact">Get Started</a>
+
+        </div>
+    </header>
+    <section>
+        <div class="container">
+
+            <h1>ML.NET – Introduction to Machine Learning With C#</h1>
+            <p>
+                Posted by MrD Brains | Updated Date: May 10, 2024
+            </p>
+            <div class="alert">
+                <strong>Ready to take your skills to the next level?</strong> Jump into our high-impact courses in web
+                development and software architecture, all with a focus on mastering the .NET/C# framework. Whether
+                you're building sleek web applications or designing scalable software solutions, our expert-led training
+                will give you the tools to succeed. Visit our <a href="#">COURSES</a> page now and kickstart your
+                journey!
+            </div>
+            <p>
+                <strong>To download the source code for this article, you can visit our <a href="https://github.com/MrDBrains">GitHub
+                        repository</a>.</strong>
+            </p>
+
+            <hr />
+
+            <h2>Introduction</h2>
+            <p>
+                Machine learning is one of the most exciting and rapidly evolving fields in computer science. Lately, we
+                have seen the emergence of advanced AI tools such as ChatGPT. The basis for these tools is machine
+                learning, and its growing prevalence should make developers sit up and take notice.
+            </p>
+
+            <h2>What Is Machine Learning and How Does ML.NET Enable It?</h2>
+            <p>
+                Machine Learning, or ML for short, is a field of computer science that involves training algorithms to
+                recognize patterns in data. Predictions or decisions are made based on these patterns. The goal of the
+                machine learning model is to predict a new system state based on previous states.
+            </p>
+            <div class="note">
+                From a clear C# developer’s point of view, Machine Learning can be challenging because building and
+                training models require a lot of specialized knowledge and resources. That is where <b>ML.NET</b> comes
+                into play.
+            </div>
+            <p>
+                <b>ML.NET</b> is an open-source machine learning framework that makes it simpler for C# developers to
+                build and deploy machine learning models. It provides a range of algorithms for supervised and
+                unsupervised learning, as well as tools for data preparation, training, evaluation, and deployment.
+            </p>
+            <ul>
+                <li>
+                    <strong>Key advantage:</strong> ML.NET integrates seamlessly with the .NET ecosystem. Build machine
+                    learning models and deploy them alongside your code without learning new languages or tools.
+                </li>
+                <li>
+                    <strong>Performance optimization:</strong> ML.NET features hyperparameter tuning, feature selection,
+                    and automatic model selection—helping you build accurate and reliable models, even with large
+                    datasets.
+                </li>
+            </ul>
+
+            <h2>Setting Up the Development Environment</h2>
+            <p>
+                The first step is to install the required ML.NET packages, using the command line:
+            </p>
+            <pre><code>PM&gt; Install-Package Microsoft.ML</code></pre>
+            <p>
+                Or via NuGet Package Manager. Multiple ML.NET packages are available; for most projects, install only
+                the <code>Microsoft.ML</code> package.
+            </p>
+
+            <h2>Understanding Supervised Learning</h2>
+            <p>
+                3 main categories of machine learning models:
+            </p>
+            <ol>
+                <li><b>Supervised learning</b></li>
+                <li><b>Unsupervised learning</b></li>
+                <li><b>Semi-supervised learning</b></li>
+            </ol>
+            <p>
+                <b>Unsupervised learning:</b> Train a model on <em>unlabeled</em> data to find patterns.<br>
+                <b>Semi-supervised learning:</b> Combine labeled and unlabeled data.<br>
+                <b>Supervised learning:</b> (focus of this article) Train a model on labeled data (each data point known
+                outcome).
+            </p>
+            <p>
+                Common supervised learning algorithms: linear regression, logistic regression, decision trees, etc. Each
+                algorithm fits different problems and data types.
+            </p>
+            <ul>
+                <li>
+                    <strong>Key benefit:</strong> Supervised learning enables models for applications such as customer
+                    behavior prediction or fraud detection. <b>Requires labeled data.</b>
+                </li>
+            </ul>
+
+            <h2>Building and Training a Simple Model With ML.NET</h2>
+            <p>
+                We'll use the <i>Credit Risk Customers</i> dataset (21 columns) and focus on <code>credit_amount</code>,
+                <code>duration</code>, <code>age</code>, and <code>class</code>.<br>
+                <b>The <code>class</code> column is the one we want to predict.</b>
+            </p>
+
+            <h3>Defining ModelInput and ModelOutput Classes</h3>
+            <pre><code>public class ModelInput
+{
+    [ColumnName("duration"), LoadColumn(1)]
+    public float Duration { get; set; }
+    [ColumnName("credit_amount"), LoadColumn(4)]
+    public float CreditAmount { get; set; }
+    [ColumnName("age"), LoadColumn(12)]
+    public float Age { get; set; }
+    [ColumnName("class"), LoadColumn(20)]
+    public string Class { get; set; }
+}
+
+// Prediction result model
+public class ModelOutput
+{
+    [ColumnName("PredictedLabel")]
+    public string Prediction { get; set; }
+}
+</code></pre>
+
+            <h3>Defining the ModelBuilder Class</h3>
+            <pre><code>public class ModelBuilder
+{
+    private MLContext _mlContext = new MLContext(seed: 0);
+    private PredictionEngine&lt;ModelInput, ModelOutput&gt; _predictionEngine;
+    private IDataView _trainingDataView;
+    private IDataView _testDataView;
+    private ITransformer _mlModel;
+    ...
+}
+</code></pre>
+            <ul>
+                <li><code>_mlContext</code> – context for all ML.NET operations</li>
+                <li><code>_predictionEngine</code> – make predictions on new data</li>
+                <li><code>_trainingDataView</code> – train set</li>
+                <li><code>_testDataView</code> – test set</li>
+                <li><code>_mlModel</code> – stores the trained model</li>
+            </ul>
+
+            <h3>Model Creation Method</h3>
+            <pre><code>public void CreateModel(string dataFilePath, string savingPath)
+{
+    LoadAndSplitData(dataFilePath);
+    var pipeline = PreProcessData();
+
+    BuildAndTrainModel(_trainingDataView, pipeline);
+
+    EvaluateModel();
+    SaveModel(savingPath);
+    _predictionEngine = _mlContext.Model.CreatePredictionEngine&lt;ModelInput, ModelOutput&gt;(_mlModel);
+}
+</code></pre>
+
+            <h2>Step-by-Step ML.NET Model Development</h2>
+            <h3>Collecting Data</h3>
+            <pre><code>private void LoadAndSplitData(string dataFilePath)
+{
+    var allDataView = _mlContext.Data.LoadFromTextFile&lt;ModelInput&gt;(
+                              path: dataFilePath,
+                              hasHeader: true,
+                              separatorChar: ',');
+    var split = _mlContext.Data.TrainTestSplit(allDataView, testFraction: 0.1);
+    _trainingDataView = split.TrainSet;
+    _testDataView = split.TestSet;
+}
+</code></pre>
+            <ul>
+                <li>Load data from CSV (comma separated, header row)</li>
+                <li>Split data: 90% train, 10% test</li>
+            </ul>
+
+            <h3>Preparing The Data</h3>
+            <pre><code>public IEstimator PreProcessData()
+{
+    var pipeline = _mlContext.Transforms.Conversion
+        .MapValueToKey(inputColumnName: "class", outputColumnName: "Label");
+    pipeline.Append(_mlContext.Transforms.Concatenate("Features", "duration", "credit_amount", "age"));
+    return pipeline;
+}
+</code></pre>
+            <ul>
+                <li>Convert <code>class</code> to numeric label (<code>MapValueToKey</code>)</li>
+                <li>Combine <code>duration</code>, <code>credit_amount</code>, <code>age</code> into a features vector
+                </li>
+            </ul>
+
+            <h3>Training the Model</h3>
+            <pre><code>public IEstimator&lt;ITransformer&gt; BuildAndTrainModel(IDataView trainingDataView, IEstimator&lt;ITransformer&gt; pipeline)
+{
+    var trainingPipeline = pipeline
+            .Append(_mlContext.MulticlassClassification.Trainers.SdcaMaximumEntropy("Label", "Features"))
+            .Append(_mlContext.Transforms.Conversion.MapKeyToValue("PredictedLabel"));
+    _mlModel = trainingPipeline.Fit(trainingDataView);
+    return trainingPipeline;
+}
+</code></pre>
+            <ul>
+                <li>Choose the <code>SdcaNonCalibrated</code> algorithm</li>
+                <li>Use <code>MapKeyToValue</code> to convert predicted labels back to strings</li>
+            </ul>
+
+            <h3>Evaluating the Model</h3>
+            <pre><code>public void EvaluateModel()
+{
+    var testMetrics = _mlContext.MulticlassClassification.Evaluate(_mlModel.Transform(_testDataView));
+    Console.WriteLine($"- MicroAccuracy:\t{testMetrics.MicroAccuracy:0.###}");
+    Console.WriteLine($"- MacroAccuracy:\t{testMetrics.MacroAccuracy:0.###}");
+    Console.WriteLine($"- LogLoss:\t\t{testMetrics.LogLoss:#.###}");
+    Console.WriteLine($"- LogLossReduction:\t{testMetrics.LogLossReduction:#.###}");
+}
+</code></pre>
+            <p>
+                <b>Sample Evaluation Metrics:</b><br>
+                MicroAccuracy: 0.796<br>
+                MacroAccuracy: 0.514<br>
+                LogLoss: 34.539<br>
+                LogLossReduction: -69.23
+            </p>
+            <p>
+                Decent accuracy, but room for improvement in macro accuracy and log loss.
+            </p>
+
+            <h3>Saving and Loading the Model</h3>
+            <pre><code>private void SaveModel(string saveModelPath)
+{
+    _mlContext.Model.Save(_mlModel, _trainingDataView.Schema, 
+        Path.Combine(Environment.CurrentDirectory, saveModelPath));
+}
+
+public void LoadModel(string path)
+{
+    _mlModel = _mlContext.Model.Load(path, out _);
+    _predictionEngine = _mlContext.Model.CreatePredictionEngine&lt;ModelInput, ModelOutput&gt;(_mlModel);
+}
+</code></pre>
+
+            <h3>Prediction Usage Example</h3>
+            <pre><code>public ModelOutput Predict(ModelInput input)
+{
+    return _predictionEngine.Predict(input);
+}
+
+// Usage:
+private static string savedModelFilename = "trainedModel.zip";
+var modelBuilder = new ModelBuilder();
+modelBuilder.LoadModel(savedModelFilename);
+var modelInput = new ModelInput()
+{
+    Age = 300,
+    CreditAmount = 100000,
+    Duration = 120
+};
+var prediction = modelBuilder?.Predict(modelInput);
+Console.WriteLine($"\nExample input class is {prediction?.Prediction.ToUpper()}!");
+</code></pre>
+            <p>
+                Usage is straightforward once your model is trained and saved.
+            </p>
+            <hr />
+
+            <h2>Improving Model Performance</h2>
+            <ul>
+                <li><strong>Algorithm Selection</strong> – Choose algorithms suited for the problem/data characteristics
+                </li>
+                <li><strong>Feature Engineering</strong> – Create, transform, or select informative features</li>
+                <li><strong>Hyperparameter Tuning</strong> – Tune algorithm parameters using grid/random search</li>
+                <li><strong>Regularization</strong> – Add penalty terms to reduce overfitting</li>
+                <li><strong>Ensemble Methods</strong> – Combine multiple models (bagging, boosting, stacking)</li>
+                <li><strong>Data Augmentation</strong> – Generate more training data via transformations</li>
+            </ul>
+
+            <h2>What Can We Do With ML.NET?</h2>
+            <ul>
+                <li>Image and Video Analysis – Classification, object/face detection</li>
+                <li>Natural Language Processing – Sentiment analysis, named entity recognition, translation</li>
+                <li>Anomaly Detection – Outlier or fraud detection, intrusion detection</li>
+                <li>Predictive Modeling – Forecasting trends, pattern recognition</li>
+                <li>Recommender Systems – Personalized suggestions (products, movies, etc.)</li>
+                <li>Speech Recognition – Voice analysis, synthesis, speaker ID</li>
+            </ul>
+
+            <h2>Conclusion</h2>
+            <p>
+                In this article, we’ve covered the basics of machine learning and explored how to create a simple ML
+                model in C# using ML.NET. We also learned about techniques to improve model performance and several
+                interesting ML.NET scenarios.
+            </p>
+            <p>
+                <b>ML.NET is a great addition to the Microsoft stack, enabling C# developers to keep pace with this
+                    exciting, rapidly evolving technology.</b>
+            </p>
+        </div>
+    </section>
+
+
+    <footer id="footer" class="footer dark-background">
+
+        <div class="container copyright text-center">
+            <p>© <span>Copyright</span> <strong class="px-1 sitename">MrD Brains Technology</strong> <span>All Rights
+                    Reserved</span></p>
+            <div class="credits">
+                Powered by MrD Brains Technology
+            </div>
+        </div>
+
+    </footer>
+
+
+    <!-- Scroll Top -->
+    <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i
+            class="bi bi-arrow-up-short"></i></a>
+
+    <!-- Vendor JS Files -->
+    <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <!-- <script src="assets/vendor/php-email-form/validate.js"></script> -->
+    <script src="assets/vendor/aos/aos.js"></script>
+    <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>
+    <script src="assets/vendor/imagesloaded/imagesloaded.pkgd.min.js"></script>
+    <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+
+    <!-- Main JS File -->
+    <script src="assets/js/main.js"></script>
+
+</body>
+
+</html>
