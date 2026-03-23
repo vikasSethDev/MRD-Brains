@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-process',
-  standalone: true, imports: [CommonModule],
+  standalone: true, imports: [CommonModule, RouterLink],
   template: `
     <section id="process" class="process-sec">
       <div class="noise"></div>
@@ -98,7 +99,7 @@ import { CommonModule } from '@angular/common';
             <p>Book a free 30-minute discovery call. We'll listen, understand, and tell you honestly what we can build for you.</p>
           </div>
           <div class="pcta-actions">
-            <a href="#contact" class="btn-gold">
+            <a routerLink="/contact" class="btn-gold">
               <i class="bi bi-calendar-check"></i> Book Free Discovery Call
             </a>
             <a href="https://wa.me/919372401266?text=Hi!%20I'd%20like%20to%20start%20a%20project%20with%20MrD%20Brains."

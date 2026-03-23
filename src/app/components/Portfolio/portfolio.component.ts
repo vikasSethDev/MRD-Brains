@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-portfolio',
-  standalone: true, imports: [CommonModule],
+  standalone: true, imports: [CommonModule, RouterLink],
   template: `
     <section id="portfolio" class="port-sec">
       <div class="noise"></div>
@@ -147,7 +148,7 @@ import { CommonModule } from '@angular/common';
               <div class="pc-desc">Let's discuss how we can build something exceptional for your business.</div>
             </div>
           </div>
-          <a href="#contact" class="btn-gold" (click)="smooth($event)">
+          <a routerLink="/contact" class="btn-gold">
             Start Your Project <i class="bi bi-arrow-right"></i>
           </a>
         </div>
@@ -331,7 +332,7 @@ export class PortfolioComponent {
     { val: '1K+', lbl: 'Invoices Generated' },
     { val: '4.9★', lbl: 'App Rating' },
   ];
-  featuredStack = ['Node.js', 'React', 'Android (React Native)', 'MongoDB', 'Azure', 'REST API', 'GST API'];
+  featuredStack = ['.NET 8', 'Angular 17', 'Android (Kotlin)', 'SQL Server', 'Azure', 'REST API', 'GST API'];
   mockStats = [
     { val: '₹2.84L', lbl: "Today's Sales", color: '#EDE9E1' },
     { val: '142',    lbl: 'Active Customers', color: '#C9974A' },

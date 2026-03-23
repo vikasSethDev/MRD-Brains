@@ -1,10 +1,11 @@
 import { Component, OnInit, OnDestroy, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   template: `
     <section id="hero" class="hero">
       <!-- Layered atmosphere -->
@@ -74,7 +75,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 
             <!-- CTA Row -->
             <div class="hero-ctas animate-in" style="animation-delay:.76s">
-              <a href="#contact" class="btn-gold" (click)="smooth($event,'contact')">
+              <a routerLink="/contact" class="btn-gold">
                 <i class="bi bi-rocket-takeoff"></i>
                 <span>Start a Project</span>
               </a>

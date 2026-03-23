@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-pricing',
-  standalone: true, imports: [CommonModule],
+  standalone: true, imports: [CommonModule, RouterLink],
   template: `
     <section id="pricing" class="pricing-sec">
       <div class="noise"></div>
@@ -68,7 +69,7 @@ import { CommonModule } from '@angular/common';
               <i class="bi bi-clock"></i>
               Typical delivery: <strong>{{ p.delivery }}</strong>
             </div>
-            <a href="#contact"
+            <a routerLink="/contact"
                [class]="p.featured ? 'btn-gold pc-btn' : 'btn-outline pc-btn'">
               {{ p.cta }} <i class="bi bi-arrow-right"></i>
             </a>
@@ -130,7 +131,7 @@ import { CommonModule } from '@angular/common';
             </div>
           </div>
           <div class="pcta-actions">
-            <a href="#contact" class="btn-gold">Book Free Call <i class="bi bi-telephone-fill"></i></a>
+            <a routerLink="/contact" class="btn-gold">Book Free Call <i class="bi bi-telephone-fill"></i></a>
             <a href="https://wa.me/919372401266" target="_blank" class="btn-wa">
               <i class="bi bi-whatsapp"></i> WhatsApp Us
             </a>

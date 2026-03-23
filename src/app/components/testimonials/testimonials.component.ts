@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-testimonials',
-  standalone: true, imports: [CommonModule],
+  standalone: true, imports: [CommonModule, RouterLink],
   template: `
     <section class="testi-sec">
       <div class="noise"></div>
@@ -107,7 +108,7 @@ import { CommonModule } from '@angular/common';
               <div class="tb-sub">Mumbai · Maharashtra · Pan-India delivery</div>
             </div>
           </div>
-          <a href="#contact" class="btn-gold">
+          <a routerLink="/contact" class="btn-gold">
             Start Your Project <i class="bi bi-arrow-right"></i>
           </a>
         </div>

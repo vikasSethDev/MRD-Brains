@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-services',
-  standalone: true, imports: [CommonModule],
+  standalone: true, imports: [CommonModule, RouterLink],
   template: `
     <section id="services" class="svc-sec">
       <div class="noise"></div>
@@ -60,7 +61,7 @@ import { CommonModule } from '@angular/common';
                 </li>
               </ul>
               <div class="sp-ctas">
-                <a href="#contact" class="btn-gold">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                <a routerLink="/contact" class="btn-gold">Get a Quote <i class="bi bi-arrow-right"></i></a>
                 <div class="sp-timeframe" *ngIf="svcs[cur].timeframe">
                   <i class="bi bi-clock"></i> Typical delivery: {{ svcs[cur].timeframe }}
                 </div>

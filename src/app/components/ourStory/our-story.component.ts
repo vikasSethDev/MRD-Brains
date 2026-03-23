@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-our-story',
-  standalone: true, imports: [CommonModule],
+  standalone: true, imports: [CommonModule, RouterLink],
   template: `
     <section id="our-story" class="story-sec">
       <div class="noise"></div>
@@ -141,7 +142,7 @@ import { CommonModule } from '@angular/common';
 
             <!-- CTA -->
             <div class="story-cta">
-              <a href="#contact" class="btn-gold">
+              <a routerLink="/contact" class="btn-gold">
                 Work With Us <i class="bi bi-arrow-right"></i>
               </a>
               <a href="https://wa.me/919372401266?text=Hi%20Vishal!%20I%20read%20your%20story%20and%20would%20love%20to%20discuss%20a%20project."
