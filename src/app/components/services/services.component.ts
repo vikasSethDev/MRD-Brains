@@ -3,280 +3,393 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-services',
-  standalone: true, imports:[CommonModule],
+  standalone: true, imports: [CommonModule],
   template: `
     <section id="services" class="svc-sec">
       <div class="noise"></div>
-      <div class="container">
+      <div class="svc-glow sg1"></div>
+      <div class="svc-glow sg2"></div>
 
-        <div class="svc-header" data-aos="fade-up">
-          <div>
+      <div class="container">
+        <!-- Header -->
+        <div class="svc-top" data-aos="fade-up">
+          <div class="svc-top-left">
             <div class="eyebrow">What We Do</div>
-            <h2 class="sec-h2">Our <em>Services</em></h2>
+            <h2 class="sec-h2">End-to-End <em>Technology</em> Services</h2>
           </div>
-          <p class="sec-lead" style="max-width:360px">
-            Empowering your business with robust technology, tailored software and reliable support.
+          <p class="sec-lead" style="max-width:380px">
+            From custom software engineering to cloud infrastructure and AI automation —
+            every service is delivered with the precision your business demands.
           </p>
         </div>
 
-        <!-- Spotlight -->
-        <div class="spotlight" data-aos="fade-up" data-aos-delay="80">
-          <div class="sp-left">
-            <div class="sp-num">{{ (cur+1).toString().padStart(2,'0') }}</div>
-            <div class="sp-ico" [class.wa-ico]="svcs[cur].isWa">
-              <i [class]="svcs[cur].icon"></i>
-            </div>
-            <div class="sp-new-badge" *ngIf="svcs[cur].isNew">
-              <i class="bi bi-stars"></i> New Service
-            </div>
-            <h3 class="sp-h">{{ svcs[cur].title }}</h3>
-            <p class="sp-p">{{ svcs[cur].desc }}</p>
-            <ul class="sp-pts">
-              <li *ngFor="let p of svcs[cur].pts">
-                <span class="sp-check"><i class="bi bi-check-lg"></i></span>{{ p }}
-              </li>
-            </ul>
-            <a href="#contact" class="btn-gold mt-4 d-inline-flex">
-              Get a Quote <i class="bi bi-arrow-right"></i>
-            </a>
+        <!-- Featured spotlight -->
+        <div class="svc-spotlight" data-aos="fade-up" data-aos-delay="60">
+          <!-- Nav tabs -->
+          <div class="spot-tabs">
+            <button class="spot-tab" *ngFor="let s of svcs; let i=index"
+                    [class.active]="i===cur" [class.wa-tab]="s.isWa"
+                    (click)="cur=i">
+              <i [class]="s.icon"></i>
+              <span>{{ s.short }}</span>
+              <span class="tab-new" *ngIf="s.isNew">NEW</span>
+            </button>
           </div>
-          <div class="sp-visual" [class.wa-visual]="svcs[cur].isWa">
-            <i [class]="svcs[cur].icon + ' sp-big'"></i>
-            <div class="sp-ring sr1"></div>
-            <div class="sp-ring sr2"></div>
-          </div>
-        </div>
 
-        <!-- Service grid -->
-        <div class="svc-grid">
-          <div class="svc-card"
-               *ngFor="let s of svcs; let i=index"
-               [class.active]="i===cur"
-               [class.wa-card]="s.isWa"
-               (click)="cur=i"
-               data-aos="fade-up"
-               [attr.data-aos-delay]="(i%3)*70">
-            <div class="sc-top">
-              <div class="sc-ico" [class.wa-ico-sm]="s.isWa"><i [class]="s.icon"></i></div>
-              <div class="sc-meta">
-                <span class="sc-num">{{ (i+1).toString().padStart(2,'0') }}</span>
-                <span class="sc-new-chip" *ngIf="s.isNew">
-                  <i class="bi bi-stars"></i> New
-                </span>
+          <!-- Content pane -->
+          <div class="spot-pane" [class.wa-pane]="svcs[cur].isWa">
+            <div class="spot-left">
+              <div class="sp-index">{{ (cur+1).toString().padStart(2,'0') }} / {{ svcs.length.toString().padStart(2,'0') }}</div>
+              <div class="sp-ico-wrap" [class.sp-wa]="svcs[cur].isWa">
+                <div class="sp-ico">
+                  <i [class]="svcs[cur].icon"></i>
+                </div>
+              </div>
+              <div class="sp-badge" *ngIf="svcs[cur].isNew">
+                <i class="bi bi-stars"></i> New Service — 2025
+              </div>
+              <h3 class="sp-title">{{ svcs[cur].title }}</h3>
+              <p class="sp-desc">{{ svcs[cur].desc }}</p>
+              <ul class="sp-bullets">
+                <li *ngFor="let b of svcs[cur].bullets">
+                  <div class="spb-check"><i class="bi bi-check-lg"></i></div>
+                  <div class="spb-body">
+                    <div class="spb-title">{{ b.title }}</div>
+                    <div class="spb-desc">{{ b.desc }}</div>
+                  </div>
+                </li>
+              </ul>
+              <div class="sp-ctas">
+                <a href="#contact" class="btn-gold">Get a Quote <i class="bi bi-arrow-right"></i></a>
+                <div class="sp-timeframe" *ngIf="svcs[cur].timeframe">
+                  <i class="bi bi-clock"></i> Typical delivery: {{ svcs[cur].timeframe }}
+                </div>
               </div>
             </div>
-            <div class="sc-h">{{ s.title }}</div>
-            <p class="sc-p">{{ s.short }}</p>
-            <div class="sc-cta">Explore <i class="bi bi-arrow-right"></i></div>
-            <div class="sc-bar"></div>
+            <div class="spot-right" [class.spot-wa]="svcs[cur].isWa">
+              <div class="spr-visual">
+                <i [class]="svcs[cur].icon + ' spr-big'"></i>
+                <div class="spr-ring sr1"></div>
+                <div class="spr-ring sr2"></div>
+              </div>
+              <!-- Tech stack tags -->
+              <div class="spr-stack">
+                <div class="spr-stack-label">Tech Stack</div>
+                <div class="spr-tags">
+                  <span class="spr-tag" *ngFor="let t of svcs[cur].stack">{{ t }}</span>
+                </div>
+              </div>
+              <!-- Stats row -->
+              <div class="spr-stats">
+                <div class="sps-item" *ngFor="let st of svcs[cur].stats">
+                  <div class="sps-val">{{ st.val }}</div>
+                  <div class="sps-lbl">{{ st.lbl }}</div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
+        <!-- All services grid -->
+        <div class="svc-grid">
+          <div class="svc-card" *ngFor="let s of svcs; let i=index"
+               [class.active]="i===cur" [class.wa-card]="s.isWa"
+               (click)="cur=i" data-aos="fade-up" [attr.data-aos-delay]="(i%3)*80">
+            <div class="scc-inner">
+              <div class="scc-top">
+                <div class="scc-icon" [class.scc-wa]="s.isWa"><i [class]="s.icon"></i></div>
+                <span class="scc-new" *ngIf="s.isNew"><i class="bi bi-stars"></i> New</span>
+                <span class="scc-num">{{ (i+1).toString().padStart(2,'0') }}</span>
+              </div>
+              <div class="scc-title">{{ s.title }}</div>
+              <div class="scc-desc">{{ s.summary }}</div>
+              <div class="scc-tags">
+                <span *ngFor="let t of s.stack | slice:0:3">{{ t }}</span>
+              </div>
+              <div class="scc-cta">
+                <span>Explore</span> <i class="bi bi-arrow-right"></i>
+              </div>
+            </div>
+            <div class="scc-bar"></div>
+          </div>
+        </div>
       </div>
     </section>
   `,
   styles: [`
-    .svc-sec { padding:120px 0; background:var(--obsidian-s); position:relative; }
+    .svc-sec { padding: 140px 0; background: var(--obsidian-s); position: relative; overflow: hidden; }
+    .svc-glow { position: absolute; border-radius: 50%; pointer-events: none; filter: blur(100px); }
+    .sg1 { width:500px;height:500px;background:rgba(201,151,74,.05);top:-100px;right:-150px; }
+    .sg2 { width:400px;height:400px;background:rgba(232,93,58,.04);bottom:-100px;left:-100px; }
 
-    .svc-header {
-      display:flex; align-items:flex-end; justify-content:space-between;
-      gap:32px; margin-bottom:52px;
+    .svc-top {
+      display: flex; align-items: flex-end; justify-content: space-between; gap: 32px;
+      margin-bottom: 56px;
     }
-    @media(max-width:767px){ .svc-header{flex-direction:column;align-items:flex-start} }
+    @media(max-width:767px){ .svc-top{flex-direction:column;align-items:flex-start} }
 
     /* ── Spotlight ── */
-    .spotlight {
-      display:grid; grid-template-columns:1fr 1fr; gap:48px; align-items:center;
-      background:linear-gradient(135deg,var(--obsidian-l),var(--obsidian-m));
-      border:1px solid rgba(212,168,83,.15); border-radius:24px; padding:48px;
-      margin-bottom:48px; position:relative; overflow:hidden;
+    .svc-spotlight {
+      background: linear-gradient(160deg,var(--obsidian-l),var(--obsidian-m));
+      border: 1px solid rgba(201,151,74,.14); border-radius: 24px;
+      overflow: hidden; margin-bottom: 36px; position: relative;
       &::before {
         content:''; position:absolute; top:0; left:0; right:0; height:1px;
-        background:linear-gradient(90deg,transparent,rgba(212,168,83,.4),transparent);
+        background:linear-gradient(90deg,transparent,rgba(201,151,74,.4),transparent);
       }
     }
-    @media(max-width:767px){ .spotlight{grid-template-columns:1fr;padding:28px} }
 
-    .sp-num {
-      font-family:'DM Mono',monospace; font-size:4rem; font-weight:500;
-      color:rgba(212,168,83,.08); line-height:1; margin-bottom:4px;
+    /* Tabs */
+    .spot-tabs {
+      display: flex; gap: 0; border-bottom: 1px solid rgba(255,255,255,.06);
+      overflow-x: auto; scrollbar-width: none;
+      &::-webkit-scrollbar { display: none; }
+    }
+    .spot-tab {
+      display: flex; align-items: center; gap: 7px;
+      padding: 16px 22px; background: none; border: none; cursor: pointer;
+      font-family: var(--f-head); font-weight: 600; font-size: .78rem;
+      color: rgba(237,233,225,.4); white-space: nowrap; position: relative;
+      transition: all .22s; border-bottom: 2px solid transparent; margin-bottom: -1px;
+      i { font-size: .85rem; color: var(--coral); }
+      &.active { color: var(--ghost); border-bottom-color: var(--gold); i{color:var(--gold)} }
+      &.wa-tab.active { border-bottom-color: #25D366; i{color:#25D366} }
+      &:hover:not(.active) { color: var(--ghost-m); }
+    }
+    .tab-new {
+      background: rgba(37,211,102,.14); border: 1px solid rgba(37,211,102,.25);
+      border-radius: 4px; padding: 2px 7px;
+      font-family: var(--f-mono); font-size: .56rem; color: #25D366; letter-spacing: .08em;
+    }
+
+    /* Content pane */
+    .spot-pane {
+      display: grid; grid-template-columns: 1.2fr 1fr; gap: 0;
+      min-height: 440px;
+    }
+    .spot-pane.wa-pane { background: rgba(37,211,102,.02); }
+    @media(max-width:767px){ .spot-pane{grid-template-columns:1fr} }
+
+    .spot-left { padding: 40px; }
+    .sp-index { font-family:var(--f-mono);font-size:.6rem;color:rgba(201,151,74,.3);letter-spacing:.1em;margin-bottom:8px; }
+    .sp-ico-wrap {
+      display: inline-flex; margin-bottom: 12px;
     }
     .sp-ico {
-      width:54px; height:54px; background:var(--gold-dim); border:1px solid var(--gold-ring);
-      border-radius:14px; display:flex; align-items:center; justify-content:center;
-      margin-bottom:12px; animation:goldGlow 4s ease-in-out infinite;
-      i { color:var(--gold); font-size:1.5rem; }
+      width: 56px; height: 56px;
+      background: var(--gold-dim); border: 1px solid var(--gold-ring);
+      border-radius: 15px; display: flex; align-items: center; justify-content: center;
+      animation: goldGlow 4s ease-in-out infinite;
+      i { color: var(--gold); font-size: 1.5rem; }
     }
-    .sp-ico.wa-ico {
-      background:rgba(37,211,102,.1); border-color:rgba(37,211,102,.28);
-      animation:none;
-      i { color:#25D366; }
+    .sp-ico-wrap.sp-wa .sp-ico {
+      background: rgba(37,211,102,.1); border-color: rgba(37,211,102,.25);
+      animation: none; i { color: #25D366; }
     }
-    .sp-new-badge {
-      display:inline-flex; align-items:center; gap:5px;
-      background:rgba(37,211,102,.1); border:1px solid rgba(37,211,102,.25);
-      border-radius:50px; padding:4px 13px; margin-bottom:12px;
-      font-family:'DM Mono',monospace; font-size:.66rem; color:#25D366;
-      i { font-size:.7rem; }
+    .sp-badge {
+      display: inline-flex; align-items: center; gap: 5px;
+      background: rgba(37,211,102,.08); border: 1px solid rgba(37,211,102,.2);
+      border-radius: 50px; padding: 4px 13px; margin-bottom: 14px;
+      font-family: var(--f-mono); font-size: .64rem; color: #25D366; letter-spacing: .06em;
+      i { font-size: .7rem; }
     }
-    .sp-h { font-family:'Syne',sans-serif; font-size:1.7rem; font-weight:700; color:var(--ghost); margin-bottom:10px; }
-    .sp-p { font-size:.9rem; font-weight:300; color:var(--ghost-d); line-height:1.8; margin-bottom:18px; }
-    .sp-pts {
-      list-style:none; padding:0; display:flex; flex-direction:column; gap:9px;
-      li { display:flex; align-items:center; gap:10px; font-size:.86rem; color:var(--ghost-m); }
+    .sp-title { font-family:var(--f-head);font-weight:800;font-size:1.55rem;color:var(--ghost);margin-bottom:12px; }
+    .sp-desc  { font-size:.88rem;font-weight:300;color:var(--ghost-d);line-height:1.82;margin-bottom:22px; }
+    .sp-bullets { list-style:none;padding:0;display:flex;flex-direction:column;gap:10px;margin-bottom:28px; }
+    .sp-bullets li { display:flex;align-items:flex-start;gap:10px; }
+    .spb-check {
+      width:22px;height:22px;flex-shrink:0;border-radius:6px;margin-top:1px;
+      background:var(--gold-dim);border:1px solid var(--gold-ring);
+      display:flex;align-items:center;justify-content:center;
+      i{color:var(--gold);font-size:.7rem}
     }
-    .sp-check {
-      width:22px; height:22px; flex-shrink:0;
-      background:var(--gold-dim); border:1px solid var(--gold-ring);
-      border-radius:6px; display:flex; align-items:center; justify-content:center;
-      i { color:var(--gold); font-size:.72rem; }
+    .spb-title { font-family:var(--f-head);font-weight:700;font-size:.82rem;color:var(--ghost);margin-bottom:2px; }
+    .spb-desc  { font-size:.74rem;color:var(--ghost-d);line-height:1.5; }
+    .sp-ctas { display:flex;align-items:center;gap:18px;flex-wrap:wrap; }
+    .sp-timeframe {
+      display:flex;align-items:center;gap:6px;
+      font-family:var(--f-mono);font-size:.66rem;color:var(--ghost-d);letter-spacing:.06em;
+      i{color:var(--gold);font-size:.72rem}
     }
-    .sp-visual {
-      position:relative; display:flex; align-items:center; justify-content:center;
-      height:240px; border-radius:18px;
-      background:rgba(255,255,255,.02); border:1px solid rgba(255,255,255,.05); overflow:hidden;
-    }
-    .sp-visual.wa-visual {
-      background:rgba(37,211,102,.04); border-color:rgba(37,211,102,.12);
-    }
-    .sp-big {
-      font-size:5.5rem; color:var(--gold); opacity:.3;
-      animation:floatSlow 4s ease-in-out infinite;
-    }
-    .sp-visual.wa-visual .sp-big { color:#25D366; opacity:.4; }
-    .sp-ring {
-      position:absolute; border-radius:50%;
-      border:1px solid rgba(212,168,83,.1);
-      top:50%; left:50%; transform:translate(-50%,-50%);
-    }
-    .sr1 { width:180px; height:180px; animation:rotateSlow 20s linear infinite; }
-    .sr2 { width:120px; height:120px; animation:rotateSlow 14s linear infinite reverse; border-style:dashed; }
-    .sp-visual.wa-visual .sp-ring { border-color:rgba(37,211,102,.12); }
 
-    /* ── Service grid ── */
-    .svc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+    .spot-right {
+      border-left:1px solid rgba(255,255,255,.06);
+      display:flex;flex-direction:column;gap:0;
+    }
+    .spot-right.spot-wa { border-color:rgba(37,211,102,.08); }
+    @media(max-width:767px){ .spot-right{border-left:none;border-top:1px solid rgba(255,255,255,.06)} }
+    .spr-visual {
+      flex:1;display:flex;align-items:center;justify-content:center;
+      position:relative;overflow:hidden;padding:32px;min-height:200px;
+    }
+    .spr-big { font-size:6rem;color:var(--gold);opacity:.2;animation:floatSlow 5s ease-in-out infinite; }
+    .spot-right.spot-wa .spr-big { color:#25D366;opacity:.25; }
+    .spr-ring {
+      position:absolute;border-radius:50%;
+      top:50%;left:50%;transform:translate(-50%,-50%);
+      border:1px solid rgba(201,151,74,.08);
+    }
+    .sr1 { width:200px;height:200px;animation:rotateSlow 22s linear infinite; }
+    .sr2 { width:130px;height:130px;animation:rotateSlowReverse 16s linear infinite;border-style:dashed; }
+    .spot-right.spot-wa .spr-ring { border-color:rgba(37,211,102,.08); }
+
+    .spr-stack {
+      border-top:1px solid rgba(255,255,255,.06);padding:18px 24px;
+    }
+    .spr-stack-label { font-family:var(--f-mono);font-size:.58rem;text-transform:uppercase;letter-spacing:.16em;color:rgba(201,151,74,.4);margin-bottom:10px; }
+    .spr-tags { display:flex;flex-wrap:wrap;gap:6px; }
+    .spr-tag {
+      background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);
+      border-radius:5px;padding:4px 11px;
+      font-family:var(--f-mono);font-size:.65rem;color:var(--ghost-d);
+    }
+    .spr-stats {
+      border-top:1px solid rgba(255,255,255,.06);
+      display:grid;grid-template-columns:repeat(3,1fr);
+    }
+    .sps-item {
+      padding:16px;text-align:center;border-right:1px solid rgba(255,255,255,.06);
+      &:last-child{border-right:none}
+    }
+    .sps-val { font-family:var(--f-head);font-weight:800;font-size:1.2rem;color:var(--ghost);line-height:1;margin-bottom:3px; }
+    .sps-lbl { font-family:var(--f-mono);font-size:.58rem;color:var(--ghost-d);text-transform:uppercase;letter-spacing:.08em; }
+
+    /* ── Grid ── */
+    .svc-grid { display:grid;grid-template-columns:repeat(3,1fr);gap:14px; }
     @media(max-width:991px){ .svc-grid{grid-template-columns:repeat(2,1fr)} }
     @media(max-width:575px){ .svc-grid{grid-template-columns:1fr} }
-
     .svc-card {
-      background:var(--obsidian-m); border:1px solid rgba(255,255,255,.07);
-      border-radius:16px; padding:24px; cursor:pointer;
-      position:relative; overflow:hidden;
-      transition:all .3s cubic-bezier(.4,0,.2,1);
-      &:hover {
-        border-color:rgba(212,168,83,.2); transform:translateY(-4px);
-        box-shadow:0 20px 48px rgba(0,0,0,.3);
-      }
-      &.active {
-        border-color:rgba(212,168,83,.35);
-        background:linear-gradient(135deg,var(--obsidian-l),var(--obsidian-m));
-        .sc-bar { transform:scaleX(1); }
-        .sc-ico { background:var(--gold-dim); border-color:var(--gold-ring); i{color:var(--gold)} }
-      }
+      background:var(--obsidian-m);border:1px solid rgba(255,255,255,.06);
+      border-radius:16px;overflow:hidden;cursor:pointer;position:relative;
+      transition:all .32s cubic-bezier(.4,0,.2,1);
+      &:hover { border-color:rgba(201,151,74,.2);transform:translateY(-5px);box-shadow:0 20px 50px rgba(0,0,0,.35); }
+      &.active { border-color:rgba(201,151,74,.3);background:var(--obsidian-l); .scc-bar{transform:scaleX(1)} }
+      &.wa-card { border-color:rgba(37,211,102,.1); &:hover{border-color:rgba(37,211,102,.25)} &.active{border-color:rgba(37,211,102,.3);.scc-bar{background:linear-gradient(90deg,#25D366,#128C7E)}} }
     }
-
-    /* WhatsApp card */
-    .svc-card.wa-card {
-      border-color:rgba(37,211,102,.14);
-      &:hover { border-color:rgba(37,211,102,.32); }
-      &.active {
-        border-color:rgba(37,211,102,.38);
-        background:linear-gradient(135deg,rgba(37,211,102,.06),var(--obsidian-m));
-        .sc-bar { background:linear-gradient(90deg,#25D366,#128C7E); transform:scaleX(1); }
-        .sc-ico.wa-ico-sm { background:rgba(37,211,102,.14) !important; border-color:rgba(37,211,102,.3) !important; i{color:#25D366 !important} }
-      }
-    }
-
-    .sc-top { display:flex; align-items:flex-start; justify-content:space-between; margin-bottom:14px; }
-    .sc-ico {
-      width:42px; height:42px;
-      background:rgba(244,107,74,.08); border:1px solid rgba(244,107,74,.15);
-      border-radius:10px; display:flex; align-items:center; justify-content:center;
+    .scc-inner { padding:24px; }
+    .scc-top { display:flex;align-items:center;margin-bottom:14px;gap:8px; }
+    .scc-icon {
+      width:40px;height:40px;border-radius:10px;
+      background:var(--coral-dim);border:1px solid var(--coral-ring);
+      display:flex;align-items:center;justify-content:center;flex-shrink:0;
       transition:all .28s;
-      i { color:var(--coral); font-size:1.2rem; }
+      i{color:var(--coral);font-size:1.15rem}
     }
-    .sc-ico.wa-ico-sm {
-      background:rgba(37,211,102,.1) !important; border-color:rgba(37,211,102,.22) !important;
-      i { color:#25D366 !important; }
+    .scc-icon.scc-wa { background:rgba(37,211,102,.08);border-color:rgba(37,211,102,.2); i{color:#25D366} }
+    .svc-card.active .scc-icon { background:var(--gold-dim);border-color:var(--gold-ring); i{color:var(--gold)} }
+    .scc-new {
+      display:inline-flex;align-items:center;gap:3px;
+      background:rgba(37,211,102,.1);border:1px solid rgba(37,211,102,.2);border-radius:4px;
+      padding:2px 8px;font-family:var(--f-mono);font-size:.58rem;color:#25D366;letter-spacing:.06em;
+      i{font-size:.6rem}
     }
-    .sc-meta { display:flex; flex-direction:column; align-items:flex-end; gap:4px; }
-    .sc-num { font-family:'DM Mono',monospace; font-size:.64rem; color:rgba(212,168,83,.3); }
-    .sc-new-chip {
-      display:inline-flex; align-items:center; gap:3px;
-      background:rgba(37,211,102,.1); border:1px solid rgba(37,211,102,.22);
-      border-radius:50px; padding:2px 8px;
-      font-family:'DM Mono',monospace; font-size:.58rem; color:#25D366;
-      i { font-size:.6rem; }
-    }
-    .sc-h { font-family:'Syne',sans-serif; font-weight:700; font-size:.9rem; color:var(--ghost); margin-bottom:7px; }
-    .sc-p { font-size:.78rem; color:var(--ghost-d); line-height:1.6; margin-bottom:16px; }
-    .sc-cta {
-      display:flex; align-items:center; gap:5px;
-      font-family:'DM Mono',monospace; font-size:.7rem; color:rgba(212,168,83,.4);
-      transition:all .22s;
-      .svc-card:hover & { color:var(--gold); gap:9px; }
-    }
-    .sc-bar {
-      position:absolute; bottom:0; left:0; right:0; height:2px;
-      background:linear-gradient(90deg,var(--gold),var(--coral));
-      transform:scaleX(0); transform-origin:left;
-      transition:transform .4s cubic-bezier(.4,0,.2,1);
-      .svc-card:hover & { transform:scaleX(1); }
+    .scc-num { margin-left:auto;font-family:var(--f-mono);font-size:.62rem;color:rgba(201,151,74,.25); }
+    .scc-title { font-family:var(--f-head);font-weight:700;font-size:.88rem;color:var(--ghost);margin-bottom:8px; }
+    .scc-desc  { font-size:.76rem;color:var(--ghost-d);line-height:1.65;margin-bottom:14px; }
+    .scc-tags  { display:flex;flex-wrap:wrap;gap:5px;margin-bottom:16px;
+      span{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.06);border-radius:4px;padding:3px 9px;font-family:var(--f-mono);font-size:.6rem;color:var(--ghost-d)} }
+    .scc-cta { display:flex;align-items:center;gap:5px;font-family:var(--f-mono);font-size:.68rem;color:rgba(201,151,74,.35);transition:all .22s;
+      .svc-card:hover &{color:var(--gold);gap:9px} }
+    .scc-bar {
+      height:2px;background:linear-gradient(90deg,var(--gold-l),var(--coral));
+      transform:scaleX(0);transform-origin:left;transition:transform .4s cubic-bezier(.4,0,.2,1);
+      .svc-card:hover &{transform:scaleX(1)}
     }
   `]
 })
 export class ServicesComponent {
   cur = 0;
-
   svcs = [
     {
-      icon:'bi bi-window', isWa:false, isNew:false,
-      title:'Desktop App Development',
-      short:'Powerful .NET desktop solutions for your workflow.',
-      desc:'We build robust, reliable desktop applications tailored to your exact business processes — ERP, CRM, HRM and beyond.',
-      pts:['.NET WPF & WinForms','ERP, CRM & HRM systems','Offline-capable apps','Legacy modernisation'],
-    },
-    {
-      icon:'bi bi-globe2', isWa:false, isNew:false,
-      title:'Web App Development',
-      short:'Angular, React & .NET Core SPAs and APIs.',
-      desc:'Modern web applications with Angular or React frontends and high-performance ASP.NET Core backends.',
-      pts:['Angular & React SPAs','ASP.NET Core REST APIs','Progressive Web Apps','E-commerce & portals'],
-    },
-    {
-      icon:'bi bi-hdd-network', isWa:false, isNew:false,
-      title:'IT Infrastructure',
-      short:'Cloud, networking & server management.',
-      desc:'End-to-end design, deployment and maintenance of infrastructure that keeps your business online.',
-      pts:['Network design & setup','Azure cloud migration','Server management','Disaster recovery'],
-    },
-    
-    {
-      icon:'bi bi-server', isWa:false, isNew:false,
-      title:'Hosting Services',
-      short:'Reliable managed hosting — 99.9% uptime.',
-      desc:'Managed, optimised hosting keeping your applications fast, accessible and protected.',
-      pts:['Managed web hosting','Database hosting','SSL & CDN setup','99.9% uptime SLA'],
-    },
-    {
-      icon:'bi bi-megaphone', isWa:false, isNew:false,
-      title:'Digital Marketing',
-      short:'SEO, social media & paid ads that deliver ROI.',
-      desc:'Data-driven SEO, social media strategy, Google/Meta campaigns and clear analytics reporting.',
-      pts:['SEO & content strategy','Social media management','Google & Meta ads','Analytics & reporting'],
-    },
-    {
-      icon:'bi bi-whatsapp', isWa:true, isNew:true,
-      title:'WhatsApp Automation & AI Solutions',
-      short:'Automate customer communication with WhatsApp APIs & AI.',
-      desc:'Automate customer communication and enhance engagement using WhatsApp Business APIs and AI-powered tools — from bulk messaging to intelligent chatbots.',
-      pts:[
-        'Bulk WhatsApp messaging (Transactional & Promotional)',
-        'Automated reminders (payments, orders, appointments)',
-        'AI Chatbots for 24/7 customer support',
-        'Campaign automation & analytics',
-        'CRM / ERP system integration',
+      icon: 'bi bi-whatsapp', isWa: true, isNew: true,
+      short: 'WhatsApp AI', title: 'WhatsApp Automation & AI Solutions',
+      summary: 'AI-powered customer engagement via WhatsApp.',
+      desc: 'Transform your customer communication with WhatsApp Business API automation and AI chatbots. From bulk transactional messaging to intelligent 24/7 support bots — drive engagement at scale, effortlessly.',
+      timeframe: '3–8 weeks',
+      stack: ['WhatsApp Business API', 'OpenAI GPT-4', 'LangChain', 'Node.js', 'Twilio', 'Webhook'],
+      bullets: [
+        { title: 'Bulk Messaging & Campaigns',       desc: 'Send personalised transactional and promotional messages to thousands instantly.' },
+        { title: 'AI Chatbots — 24/7 Support',       desc: 'GPT-powered bots that handle FAQs, bookings and order status round the clock.' },
+        { title: 'Automated Business Reminders',     desc: 'Payment due dates, appointment reminders and delivery notifications — fully automated.' },
+        { title: 'CRM & ERP System Integration',     desc: 'Connect WhatsApp workflows directly into your existing business software.' },
+        { title: 'Campaign Analytics Dashboard',     desc: 'Track delivery rates, open rates, conversions and ROI in real time.' },
       ],
+      stats: [{ val: '70%', lbl: 'Cost saved' }, { val: '24/7', lbl: 'AI support' }, { val: '98%', lbl: 'Open rate' }],
+    },
+    {
+      icon: 'bi bi-window', isWa: false, isNew: false,
+      short: 'Desktop Apps', title: 'Desktop Application Development',
+      summary: 'Robust .NET WPF & WinForms apps for your workflows.',
+      desc: 'We architect and deliver high-performance desktop applications tailored to your exact operational needs. ERP, CRM, HRM, POS — if your business runs on desktop, we engineer it to run flawlessly.',
+      timeframe: '6–14 weeks',
+      stack: ['.NET 8', 'WPF', 'WinForms', 'MVVM', 'Entity Framework', 'SQL Server'],
+      bullets: [
+        { title: 'ERP, CRM & HRM Systems',       desc: 'Full-featured business management platforms with role-based access control.' },
+        { title: 'Offline-First Architecture',     desc: 'Works without internet — syncs automatically when reconnected.' },
+        { title: 'Legacy Modernisation',           desc: 'Migrate outdated VB6, VBA or classic ASP apps to modern .NET.' },
+        { title: 'Custom Reporting & Analytics',   desc: 'Crystal Reports, SSRS and custom dashboards with drill-down capability.' },
+      ],
+      stats: [{ val: '8+', lbl: 'Desktop apps' }, { val: '.NET 8', lbl: 'Latest stack' }, { val: '100%', lbl: 'Custom built' }],
+    },
+    {
+      icon: 'bi bi-globe2', isWa: false, isNew: false,
+      short: 'Web Apps', title: 'Web Application Development',
+      summary: 'Angular, React & .NET Core SPAs, APIs & portals.',
+      desc: 'Modern, responsive web applications engineered for performance and usability. We build everything from e-commerce platforms and customer portals to complex multi-tenant SaaS products.',
+      timeframe: '8–20 weeks',
+      stack: ['Angular 17', 'React 18', 'ASP.NET Core', 'REST API', 'TypeScript', 'PostgreSQL'],
+      bullets: [
+        { title: 'Single Page Applications',       desc: 'Blazing-fast SPAs with Angular or React, optimised for Core Web Vitals.' },
+        { title: 'RESTful & GraphQL APIs',          desc: 'Scalable ASP.NET Core backends with OpenAPI documentation.' },
+        { title: 'Progressive Web Apps',            desc: 'Installable, offline-capable PWAs that rival native app experiences.' },
+        { title: 'Multi-Tenant SaaS Platforms',    desc: 'Scalable subscription-based products with tenant isolation and billing.' },
+      ],
+      stats: [{ val: '7+', lbl: 'Web projects' }, { val: '100ms', lbl: 'Avg response' }, { val: 'PWA', lbl: 'Ready' }],
+    },
+    {
+      icon: 'bi bi-hdd-network', isWa: false, isNew: false,
+      short: 'IT Infrastructure', title: 'IT Infrastructure & Cloud Services',
+      summary: 'Azure cloud, networking & server management.',
+      desc: 'End-to-end design, deployment, and long-term management of IT infrastructure that keeps your business online and protected at all times.',
+      timeframe: '2–6 weeks',
+      stack: ['Microsoft Azure', 'AWS', 'VMware', 'Cisco', 'Active Directory', 'Terraform'],
+      bullets: [
+        { title: 'Cloud Migration & Architecture', desc: 'Move on-premise workloads to Azure with zero-downtime migration plans.' },
+        { title: 'Network Design & Setup',         desc: 'LAN, WAN, VPN and SD-WAN solutions for offices of any size.' },
+        { title: 'Server Management',              desc: '24/7 monitoring, patch management and proactive maintenance.' },
+        { title: 'Disaster Recovery Planning',     desc: 'RTO/RPO-defined backup strategies so you never lose business-critical data.' },
+      ],
+      stats: [{ val: '99.9%', lbl: 'Uptime SLA' }, { val: '24/7', lbl: 'Monitoring' }, { val: 'Azure', lbl: 'Certified' }],
+    },
+    {
+      icon: 'bi bi-server', isWa: false, isNew: false,
+      short: 'Hosting', title: 'Managed Hosting Services',
+      summary: 'Reliable, managed hosting with 99.9% uptime guarantee.',
+      desc: 'Enterprise-grade managed hosting that keeps your applications fast, secure and always available — with proactive monitoring and automatic failover built in.',
+      timeframe: 'Ongoing',
+      stack: ['Azure App Service', 'Nginx', 'Let\'s Encrypt', 'Cloudflare CDN', 'Redis', 'Docker'],
+      bullets: [
+        { title: 'Managed Web & App Hosting',  desc: 'Fully managed server environments with automated updates and scaling.' },
+        { title: 'SSL & CDN Configuration',    desc: 'Free SSL certificates and global CDN for sub-100ms load times.' },
+        { title: 'Database Hosting & Backups', desc: 'SQL Server and MongoDB hosting with daily encrypted backups.' },
+        { title: '99.9% Uptime SLA',           desc: 'Guaranteed uptime with real-time monitoring and incident alerts.' },
+      ],
+      stats: [{ val: '99.9%', lbl: 'Uptime' }, { val: 'Daily', lbl: 'Backups' }, { val: 'Global', lbl: 'CDN' }],
+    },
+    {
+      icon: 'bi bi-megaphone', isWa: false, isNew: false,
+      short: 'Digital Marketing', title: 'Digital Marketing & SEO',
+      summary: 'Data-driven SEO, social media & paid ads.',
+      desc: 'Performance marketing that delivers measurable ROI. From technical SEO audits to Google & Meta campaign management, we grow your digital presence with clarity and accountability.',
+      timeframe: 'Ongoing',
+      stack: ['Google Ads', 'Meta Ads', 'SEMrush', 'GA4', 'HubSpot', 'Hotjar'],
+      bullets: [
+        { title: 'Technical SEO & Content Strategy', desc: 'Core Web Vitals optimisation, schema markup and keyword targeting.' },
+        { title: 'Google & Meta Paid Campaigns',     desc: 'PPC campaigns with conversion-focused landing pages.' },
+        { title: 'Social Media Management',          desc: 'LinkedIn, Instagram and Facebook content and community management.' },
+        { title: 'Analytics & Monthly Reporting',    desc: 'GA4 dashboards with clear KPIs and actionable insights.' },
+      ],
+      stats: [{ val: '3x', lbl: 'Avg ROI' }, { val: 'GA4', lbl: 'Analytics' }, { val: 'Monthly', lbl: 'Reports' }],
     },
   ];
 }

@@ -11,6 +11,7 @@ import { PricingComponent }      from './components/pricing/pricing.component';
 import { TeamComponent }         from './components/team/team.component';
 import { ContactComponent }      from './components/contact/contact.component';
 import { FooterComponent }       from './components/footer/footer.component';
+import { FormsModule }           from '@angular/forms';
 
 declare const AOS: any;
 
@@ -18,7 +19,8 @@ declare const AOS: any;
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, NavbarComponent, HeroComponent, AboutComponent,
+    CommonModule, FormsModule,
+    NavbarComponent, HeroComponent, AboutComponent,
     StatsComponent, VyaparLedgerComponent, ServicesComponent,
     TestimonialsComponent, PricingComponent, TeamComponent,
     ContactComponent, FooterComponent,
@@ -37,32 +39,39 @@ declare const AOS: any;
       <app-contact></app-contact>
     </main>
     <app-footer></app-footer>
+
+    <!-- Scroll to top -->
     <button id="scrollTop" [class.show]="showTop" (click)="toTop()" aria-label="Back to top">
       <i class="bi bi-arrow-up"></i>
     </button>
   `,
   styles: [`
     #scrollTop {
-      position:fixed; bottom:28px; right:28px;
-      width:42px; height:42px; background:var(--gold);
-      color:var(--obsidian); border:none; border-radius:50%;
-      display:flex; align-items:center; justify-content:center;
-      cursor:pointer; z-index:9999; font-size:.9rem; font-weight:700;
-      opacity:0; visibility:hidden; transition:all .3s ease;
+      position:fixed;bottom:30px;right:30px;
+      width:44px;height:44px;
+      background:linear-gradient(135deg,var(--gold-l),var(--gold));
+      color:var(--obsidian);border:none;border-radius:50%;
+      display:flex;align-items:center;justify-content:center;
+      cursor:pointer;z-index:9999;font-size:.9rem;font-weight:800;
+      opacity:0;visibility:hidden;transition:all .35s cubic-bezier(.4,0,.2,1);
+      box-shadow:0 4px 20px rgba(201,151,74,.2);
       &.show{opacity:1;visibility:visible}
-      &:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(212,168,83,.4)}
+      &:hover{transform:translateY(-4px);box-shadow:0 12px 32px rgba(201,151,74,.45)}
     }
   `]
 })
 export class AppComponent implements OnInit {
-  showTop=false;
-  constructor(@Inject(PLATFORM_ID) private pid:object){}
-  ngOnInit(){
-    if(isPlatformBrowser(this.pid)&&typeof AOS!=='undefined')
-      AOS.init({duration:750,once:true,offset:60,easing:'ease-out-cubic'});
+  showTop = false;
+  constructor(@Inject(PLATFORM_ID) private pid: object) {}
+  ngOnInit() {
+    if (isPlatformBrowser(this.pid) && typeof AOS !== 'undefined') {
+      AOS.init({ duration: 780, once: true, offset: 50, easing: 'ease-out-cubic' });
+    }
   }
-  @HostListener('window:scroll') onScroll(){
-    if(isPlatformBrowser(this.pid)) this.showTop=window.scrollY>400;
+  @HostListener('window:scroll') onScroll() {
+    if (isPlatformBrowser(this.pid)) this.showTop = window.scrollY > 450;
   }
-  toTop(){if(isPlatformBrowser(this.pid))window.scrollTo({top:0,behavior:'smooth'});}
+  toTop() {
+    if (isPlatformBrowser(this.pid)) window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
 }
