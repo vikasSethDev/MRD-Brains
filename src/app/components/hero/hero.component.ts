@@ -495,23 +495,46 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
       position: absolute; top: 0; left: 0; right: 0; height: 1px;
       background: linear-gradient(90deg,transparent,var(--gold) 25%,var(--coral) 75%,transparent);
     }
-    .strip-row { display: grid; grid-template-columns: repeat(5,1fr); }
-    @media(max-width:767px){ .strip-row{grid-template-columns:repeat(3,1fr)} }
-    @media(max-width:480px){ .strip-row{grid-template-columns:repeat(2,1fr)} }
+    .strip-row {
+      display: grid; grid-template-columns: repeat(5,1fr);
+    }
+    @media(max-width:767px){
+      .strip-row { grid-template-columns: repeat(3,1fr); }
+    }
+    @media(max-width:480px){
+      .strip-row { grid-template-columns: repeat(2,1fr); }
+    }
     .strip-item {
-      display: flex; align-items: center; gap: 12px; padding: 10px 18px;
+      display: flex; align-items: center; gap: 10px;
+      padding: 14px 12px;
       border-right: 1px solid rgba(255,255,255,.05);
+      border-bottom: 1px solid rgba(255,255,255,.04);
       opacity: 0; animation: counterUp .65s cubic-bezier(.16,1,.3,1) 1s forwards;
       &:last-child { border-right: none; }
     }
+    @media(max-width:767px){
+      .strip-item { padding: 16px 10px; justify-content: center; flex-direction: column; text-align: center; gap: 6px; }
+      .si-icon { width: 32px; height: 32px; }
+    }
+    @media(max-width:480px){
+      .strip-item:nth-child(3n){ border-right: 1px solid rgba(255,255,255,.05); }
+      .strip-item:nth-child(2n){ border-right: none; }
+    }
     .si-icon {
-      width: 38px; height: 38px; flex-shrink: 0; border-radius: 10px;
+      width: 36px; height: 36px; flex-shrink: 0; border-radius: 9px;
       background: var(--gold-dim); border: 1px solid var(--gold-ring);
       display: flex; align-items: center; justify-content: center;
-      i { color: var(--gold); font-size: .9rem; }
+      i { color: var(--gold); font-size: .85rem; }
     }
-    .si-val { font-family: var(--f-head); font-weight: 800; font-size: 1.7rem; color: var(--ghost); line-height: 1; display: block; }
-    .si-lbl { font-family: var(--f-mono); font-size: .58rem; color: var(--ghost-d); text-transform: uppercase; letter-spacing: .1em; display: block; margin-top: 2px; }
+    .si-val {
+      font-family: var(--f-head); font-weight: 800;
+      font-size: clamp(1.2rem,3vw,1.7rem);
+      color: var(--ghost); line-height: 1; display: block;
+    }
+    .si-lbl {
+      font-family: var(--f-mono); font-size: .56rem; color: var(--ghost-d);
+      text-transform: uppercase; letter-spacing: .08em; display: block; margin-top: 2px;
+    }
   `]
 })
 export class HeroComponent implements OnInit, OnDestroy {
