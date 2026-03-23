@@ -1,5 +1,6 @@
 import { Component, OnInit, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { RouterOutlet } from '@angular/router';
 import { NavbarComponent }       from './components/navbar/navbar.component';
 import { HeroComponent }         from './components/hero/hero.component';
 import { AboutComponent }        from './components/about/about.component';
@@ -23,7 +24,7 @@ declare const AOS: any;
   selector: 'app-root',
   standalone: true,
   imports: [
-    CommonModule, FormsModule,
+    CommonModule, FormsModule, RouterOutlet,
     NavbarComponent, HeroComponent, MumbaiStripComponent,
     AboutComponent, OurStoryComponent, StatsComponent,
     VyaparLedgerComponent, ServicesComponent, ProcessComponent,
