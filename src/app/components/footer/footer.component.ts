@@ -232,26 +232,20 @@ import { FormsModule } from '@angular/forms';
 export class FooterComponent {
   email = ''; subscribed = false;
   nav = [
-    { id: 'hero',      label: 'Home'         },
-    { id: 'our-story', label: 'Our Story'    },
-    { id: 'product',   label: 'Vyapar Ledger'},
-    { id: 'services',  label: 'Services'     },
-    { id: 'process',   label: 'How We Work'  },
-    { id: 'portfolio', label: 'Portfolio'    },
-    { id: 'team',      label: 'Our Team'     },
-    { id: 'contact',   label: 'Contact'      },
+    { id: '/',        label: 'Home'        },
+    { id: '/about',   label: 'About Us'    },
+    { id: '/work',    label: 'Our Work'    },
+    { id: '/process', label: 'How We Work' },
+    { id: '/contact', label: 'Contact'     },
   ];
   svcs = ['WhatsApp AI', 'Desktop Development', 'Web App Development', 'IT Infrastructure', 'Managed Hosting', 'Digital Marketing'];
   contacts = [
-    { icon: 'bi bi-geo-alt-fill',   label: 'Address',        value: '03 Jawahar Nagar, Khar East, Mumbai 400051' },
-    { icon: 'bi bi-telephone-fill', label: 'Phone / WA',     value: '+91 937-240-1266' },
-    { icon: 'bi bi-envelope-fill',  label: 'Email',          value: 'mrdbrainstech@hotmail.com' },
-    { icon: 'bi bi-clock-fill',     label: 'Working Hours',  value: 'Mon–Sat · 9:00 AM – 7:00 PM IST' },
+    { icon: 'bi bi-geo-alt-fill',   label: 'Address',       value: '03 Jawahar Nagar, Khar East, Mumbai 400051' },
+    { icon: 'bi bi-telephone-fill', label: 'Phone / WA',    value: '+91 937-240-1266' },
+    { icon: 'bi bi-envelope-fill',  label: 'Email',         value: 'mrdbrainstech@hotmail.com' },
+    { icon: 'bi bi-clock-fill',     label: 'Working Hours', value: 'Mon–Sat · 9:00 AM – 7:00 PM IST' },
   ];
   tech = ['.NET', 'Angular', 'React', 'Azure', 'SQL Server', 'MongoDB'];
   subscribe() { if (this.email) { this.subscribed = true; this.email = ''; } }
-  go(id: string) {
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
-  }
+  go(route: string) { window.location.href = route; }
 }

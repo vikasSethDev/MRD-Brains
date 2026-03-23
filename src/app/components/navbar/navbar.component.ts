@@ -1,10 +1,12 @@
 import { Component, HostListener, Inject, PLATFORM_ID } from '@angular/core';
 import { CommonModule, isPlatformBrowser } from '@angular/common';
+import { Router, RouterLink, NavigationEnd } from '@angular/router';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [CommonModule],
+  imports: [CommonModule, RouterLink],
   template: `
     <!-- Top ticker bar -->
     <div class="ticker-bar" [class.hidden]="pinned">
@@ -24,7 +26,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
         <div class="nav-row">
 
           <!-- Brand -->
-          <a class="brand" (click)="go('hero')">
+          <a class="brand" (click)="go('/')">
             <div class="brand-mark">
               <img src="assets/logo.png" alt="MrD Brains">
               <div class="brand-mark-ring"></div>
@@ -37,11 +39,8 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
 
           <ul class="links">
             <li *ngFor="let l of links">
-              <a (click)="go(l.id)" [class.active]="cur===l.id">
+              <a (click)="go(l.route)" [class.active]="cur===l.route">
                 <span class="lbl">{{ l.label }}</span>
-                <span class="dot" *ngIf="l.badge">
-                  <i class="bi bi-stars"></i>
-                </span>
               </a>
             </li>
           </ul>
@@ -51,7 +50,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
               <span class="ns-dot"></span>
               <span>Available for projects</span>
             </div>
-            <a class="btn-gold nav-cta d-none d-lg-inline-flex" (click)="go('contact')">
+            <a class="btn-gold nav-cta d-none d-lg-inline-flex" (click)="go('/contact')">
               Let's Talk <i class="bi bi-arrow-up-right"></i>
             </a>
             <button class="burger" [class.open]="open" (click)="toggle()" aria-label="Menu">
@@ -79,7 +78,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
         <span>Available for new projects — Mumbai</span>
       </div>
       <nav class="dr-links">
-        <a *ngFor="let l of links" (click)="go(l.id)">
+        <a *ngFor="let l of links" (click)="go(l.route)">
           <div class="dla-left">
             <span>{{ l.label }}</span>
             <small *ngIf="l.sub">{{ l.sub }}</small>
@@ -286,37 +285,42 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   `]
 })
 export class NavbarComponent {
-  pinned = false; open = false; cur = 'hero';
+  pinned = false; open = false; cur = '/';
   tickers = [
-    { icon: 'bi bi-geo-alt-fill', text: 'Mumbai, Maharashtra — Khar East' },
+    { icon: 'bi bi-geo-alt-fill',      text: 'Mumbai, Maharashtra — Khar East' },
     { icon: 'bi bi-check-circle-fill', text: 'ISO-grade Delivery Standards' },
-    { icon: 'bi bi-whatsapp', text: 'WhatsApp Automation & AI Solutions Now Available' },
-    { icon: 'bi bi-telephone-fill', text: '+91 937-240-1266' },
-    { icon: 'bi bi-stars', text: 'New: Vyapar Ledger — Free Download' },
+    { icon: 'bi bi-whatsapp',          text: 'WhatsApp Automation & AI Solutions Now Available' },
+    { icon: 'bi bi-telephone-fill',    text: '+91 937-240-1266' },
+    { icon: 'bi bi-stars',             text: 'New: Vyapar Ledger — Free Download' },
   ];
   links = [
-    { id: 'hero',       label: 'Home',      sub: 'Welcome',       badge: false },
-    { id: 'our-story',  label: 'Our Story', sub: 'Who we are',    badge: false },
-    { id: 'services',   label: 'Services',  sub: 'What we do',    badge: false },
-    { id: 'process',    label: 'Process',   sub: 'How we work',   badge: false },
-    { id: 'portfolio',  label: 'Portfolio', sub: 'Our work',      badge: false },
-    { id: 'team',       label: 'Team',      sub: 'The people',    badge: false },
-    { id: 'contact',    label: 'Contact',   sub: 'Get in touch',  badge: false },
+    { route: '/',        label: 'Home',      sub: 'Welcome'      },
+    { route: '/about',   label: 'About',     sub: 'Our story'    },
+    { route: '/work',    label: 'Our Work',  sub: 'Portfolio'    },
+    { route: '/process', label: 'Process',   sub: 'How we work'  },
+    { route: '/contact', label: 'Contact',   sub: 'Get in touch' },
   ];
-  constructor(@Inject(PLATFORM_ID) private pid: object) {}
+  constructor(
+    @Inject(PLATFORM_ID) private pid: object,
+    private router: Router
+  ) {
+    this.router.events.pipe(
+      filter(e => e instanceof NavigationEnd)
+    ).subscribe((e: any) => {
+      this.cur = e.urlAfterRedirects;
+      this.open = false;
+      document.body.style.overflow = '';
+    });
+  }
   @HostListener('window:scroll') onScroll() {
     if (!isPlatformBrowser(this.pid)) return;
     this.pinned = window.scrollY > 60;
-    for (let i = this.links.length - 1; i >= 0; i--) {
-      const el = document.getElementById(this.links[i].id);
-      if (el && el.getBoundingClientRect().top <= 100) { this.cur = this.links[i].id; break; }
-    }
   }
-  go(id: string) {
+  go(route: string) {
     if (!isPlatformBrowser(this.pid)) return;
-    this.open = false; document.body.style.overflow = '';
-    const el = document.getElementById(id);
-    if (el) window.scrollTo({ top: el.getBoundingClientRect().top + window.scrollY - 80, behavior: 'smooth' });
+    this.open = false;
+    document.body.style.overflow = '';
+    this.router.navigate([route]);
   }
   toggle() {
     this.open = !this.open;
