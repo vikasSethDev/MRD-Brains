@@ -30,7 +30,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
               <div class="brand-mark-ring"></div>
             </div>
             <div class="brand-text">
-              <span class="b-name">MrD Brains</span>
+              <span class="b-name"><span class="bn-coral">Mr</span><span class="bn-dark">D Brains</span></span>
               <span class="b-tag">Technology · Est. 2022</span>
             </div>
           </a>
@@ -68,7 +68,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
         <div class="dr-brand">
           <img src="assets/logo.png" alt="" class="dr-logo">
           <div>
-            <div class="dr-name">MrD Brains Technology</div>
+            <div class="dr-name"><span class="bn-coral">Mr</span><span class="bn-dark">D Brains Technology</span></div>
             <div class="dr-tag">Premium Software Studio</div>
           </div>
         </div>
@@ -154,7 +154,9 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
       position: absolute; inset: -4px; border-radius: 15px;
       border: 1px solid rgba(201,151,74,.15); pointer-events: none;
     }
-    .b-name { display: block; font-family: var(--f-head); font-weight: 800; font-size: .9rem; color: var(--ghost); line-height: 1.1; }
+    .b-name { display: block; font-family: var(--f-head); font-weight: 800; font-size: .9rem; line-height: 1.1; }
+    .bn-coral { color: #F0674A; }
+    .bn-dark  { color: #1A1A1A; }
     .b-tag  { display: block; font-family: var(--f-mono); font-size: .55rem; color: rgba(201,151,74,.55); letter-spacing: .16em; text-transform: uppercase; margin-top: 2px; }
 
     .links {
@@ -218,7 +220,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
     .dr-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
     .dr-brand { display: flex; align-items: center; gap: 10px; }
     .dr-logo { height: 38px; width: 38px; object-fit: contain; border-radius: 9px; background: var(--gold-dim); padding: 3px; }
-    .dr-name { font-family: var(--f-head); font-weight: 700; font-size: .85rem; color: var(--ghost); }
+    .dr-name { font-family: var(--f-head); font-weight: 700; font-size: .85rem; }
     .dr-tag  { font-family: var(--f-mono); font-size: .56rem; color: rgba(201,151,74,.5); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
     .dr-close { background: none; border: 1px solid rgba(255,255,255,.08); border-radius: 7px; cursor: pointer; color: rgba(237,233,225,.4); padding: 7px 9px; font-size: .86rem; transition: all .2s; &:hover{color:var(--ghost);border-color:rgba(255,255,255,.2)} }
     .dr-status {
@@ -265,12 +267,13 @@ export class NavbarComponent {
     { icon: 'bi bi-stars', text: 'New: Vyapar Ledger — Free Download' },
   ];
   links = [
-    { id: 'hero',    label: 'Home',      sub: 'Welcome', badge: false },
-    { id: 'about',   label: 'About',     sub: 'Our story', badge: false },
-    { id: 'product', label: 'Products',  sub: 'Vyapar Ledger', badge: false },
-    { id: 'services',label: 'Services',  sub: 'What we do', badge: false },
-    { id: 'team',    label: 'Team',      sub: 'The people', badge: false },
-    { id: 'contact', label: 'Contact',   sub: 'Get in touch', badge: false },
+    { id: 'hero',      label: 'Home',      sub: 'Welcome',       badge: false },
+    { id: 'about',     label: 'About',     sub: 'Our story',     badge: false },
+    { id: 'product',   label: 'Products',  sub: 'Vyapar Ledger', badge: false },
+    { id: 'services',  label: 'Services',  sub: 'What we do',    badge: false },
+    { id: 'portfolio', label: 'Portfolio', sub: 'Our work',       badge: false },
+    { id: 'team',      label: 'Team',      sub: 'The people',    badge: false },
+    { id: 'contact',   label: 'Contact',   sub: 'Get in touch',  badge: false },
   ];
   constructor(@Inject(PLATFORM_ID) private pid: object) {}
   @HostListener('window:scroll') onScroll() {

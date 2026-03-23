@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
                 <img src="assets/logo.png" alt="MrD Brains Technology">
               </div>
               <div>
-                <div class="ftl-name">MrD Brains</div>
+                <div class="ftl-name"><span class="bn-coral">Mr</span><span class="bn-dark">D Brains</span></div>
                 <div class="ftl-sub">Technology</div>
               </div>
             </div>
@@ -164,7 +164,9 @@ import { FormsModule } from '@angular/forms';
       display:flex;align-items:center;justify-content:center;flex-shrink:0;
       img{width:36px;height:36px;object-fit:contain}
     }
-    .ftl-name { font-family:var(--f-head);font-weight:800;font-size:.9rem;color:#F0674A;line-height:1.1; }
+    .ftl-name { font-family:var(--f-head);font-weight:800;font-size:.9rem;line-height:1.1; }
+    .bn-coral { color: #F0674A; }
+    .bn-dark  { color: #1A1A1A; }
     .ftl-sub  { font-family:var(--f-mono);font-size:.58rem;color:rgba(201,151,74,.5);letter-spacing:.12em;text-transform:uppercase; }
     .ft-desc  { font-size:.82rem;font-weight:300;color:var(--ghost-d);line-height:1.82;margin-bottom:18px;max-width:280px; }
     .ft-badges { display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-bottom:18px;
@@ -230,12 +232,13 @@ import { FormsModule } from '@angular/forms';
 export class FooterComponent {
   email = ''; subscribed = false;
   nav = [
-    { id: 'hero',     label: 'Home' },
-    { id: 'about',    label: 'About Us' },
-    { id: 'product',  label: 'Vyapar Ledger' },
-    { id: 'services', label: 'Services' },
-    { id: 'team',     label: 'Our Team' },
-    { id: 'contact',  label: 'Contact' },
+    { id: 'hero',      label: 'Home' },
+    { id: 'about',     label: 'About Us' },
+    { id: 'product',   label: 'Vyapar Ledger' },
+    { id: 'services',  label: 'Services' },
+    { id: 'portfolio', label: 'Portfolio' },
+    { id: 'team',      label: 'Our Team' },
+    { id: 'contact',   label: 'Contact' },
   ];
   svcs = ['WhatsApp AI', 'Desktop Development', 'Web App Development', 'IT Infrastructure', 'Managed Hosting', 'Digital Marketing'];
   contacts = [
