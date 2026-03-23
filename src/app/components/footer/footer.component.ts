@@ -232,13 +232,14 @@ import { FormsModule } from '@angular/forms';
 export class FooterComponent {
   email = ''; subscribed = false;
   nav = [
-    { id: 'hero',      label: 'Home' },
-    { id: 'about',     label: 'About Us' },
-    { id: 'product',   label: 'Vyapar Ledger' },
-    { id: 'services',  label: 'Services' },
-    { id: 'portfolio', label: 'Portfolio' },
-    { id: 'team',      label: 'Our Team' },
-    { id: 'contact',   label: 'Contact' },
+    { id: 'hero',      label: 'Home'         },
+    { id: 'our-story', label: 'Our Story'    },
+    { id: 'product',   label: 'Vyapar Ledger'},
+    { id: 'services',  label: 'Services'     },
+    { id: 'process',   label: 'How We Work'  },
+    { id: 'portfolio', label: 'Portfolio'    },
+    { id: 'team',      label: 'Our Team'     },
+    { id: 'contact',   label: 'Contact'      },
   ];
   svcs = ['WhatsApp AI', 'Desktop Development', 'Web App Development', 'IT Infrastructure', 'Managed Hosting', 'Digital Marketing'];
   contacts = [

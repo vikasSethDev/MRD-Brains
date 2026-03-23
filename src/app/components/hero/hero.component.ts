@@ -196,6 +196,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
       display: flex; flex-direction: column; justify-content: center;
       padding-top: 96px; overflow: hidden; position: relative;
     }
+    @media(max-width:767px){ .hero{ padding-top: 72px; } }
 
     /* Atmosphere layers */
     .hero-mesh {

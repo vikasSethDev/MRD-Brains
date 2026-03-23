@@ -30,7 +30,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
               <div class="brand-mark-ring"></div>
             </div>
             <div class="brand-text">
-              <span class="b-name"><span class="bn-coral">Mr</span><span class="bn-light">D Brains</span></span>
+              <span class="b-name"><span class="bn-coral">Mr</span><span class="bn-dark">D Brains</span></span>
               <span class="b-tag">Technology · Est. 2022</span>
             </div>
           </a>
@@ -102,75 +102,80 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
   styles: [`
     /* ── Ticker ── */
     .ticker-bar {
-      height: 34px; background: linear-gradient(90deg,var(--obsidian-l),var(--obsidian-m));
+      height: 32px; background: linear-gradient(90deg,var(--obsidian-l),var(--obsidian-m));
       border-bottom: 1px solid rgba(201,151,74,.1);
       display: flex; align-items: center; overflow: hidden;
       position: fixed; top: 0; left: 0; right: 0; z-index: 901;
       transition: height .4s ease, opacity .4s ease;
-      &.hidden { height: 0; opacity: 0; }
+      &.hidden { height: 0; opacity: 0; pointer-events: none; }
     }
     .ticker-track { display: flex; white-space: nowrap; animation: ticker 40s linear infinite; }
     .ticker-inner { display: flex; align-items: center; }
     .ti {
-      display: inline-flex; align-items: center; gap: 6px; padding: 0 20px;
-      font-family: var(--f-mono); font-size: .6rem; font-weight: 500;
-      color: rgba(201,151,74,.7); letter-spacing: .08em; text-transform: uppercase;
-      i { font-size: .65rem; color: var(--gold); }
+      display: inline-flex; align-items: center; gap: 6px; padding: 0 18px;
+      font-family: var(--f-mono); font-size: .58rem; font-weight: 500;
+      color: rgba(201,151,74,.65); letter-spacing: .08em; text-transform: uppercase;
+      i { font-size: .62rem; color: var(--gold); }
     }
-    .ti-sep { color: rgba(201,151,74,.3); margin-left: 20px; }
+    .ti-sep { color: rgba(201,151,74,.25); margin-left: 18px; }
 
     /* ── Nav ── */
     .nav {
-      position: fixed; top: 34px; left: 0; right: 0; z-index: 900;
-      padding: 22px 0; transition: all .42s cubic-bezier(.4,0,.2,1);
-      overflow: hidden;
+      position: fixed; top: 32px; left: 0; right: 0; z-index: 900;
+      padding: 16px 0; transition: all .42s cubic-bezier(.4,0,.2,1);
     }
     .nav-shimmer {
       position: absolute; inset: 0; pointer-events: none;
-      background: linear-gradient(180deg, rgba(8,7,6,.6) 0%, transparent 100%);
+      background: linear-gradient(180deg, rgba(8,7,6,.55) 0%, transparent 100%);
     }
     .nav.pinned {
-      top: 0; padding: 14px 0;
-      background: rgba(8,7,6,.92);
+      top: 0; padding: 12px 0;
+      background: rgba(8,7,6,.94);
       backdrop-filter: blur(28px) saturate(1.9);
       border-bottom: 1px solid rgba(201,151,74,.1);
       box-shadow: 0 4px 32px rgba(0,0,0,.4);
     }
-    .nav-row { display: flex; align-items: center; gap: 16px; }
+    .nav-row {
+      display: flex; align-items: center; gap: 8px;
+      flex-wrap: nowrap; white-space: nowrap;
+    }
 
+    /* Brand */
     .brand {
-      display: flex; align-items: center; gap: 12px;
-      cursor: pointer; flex-shrink: 0;
+      display: flex; align-items: center; gap: 10px;
+      cursor: pointer; flex-shrink: 0; text-decoration: none;
     }
     .brand-mark {
-      width: 42px; height: 42px; border-radius: 11px;
+      width: 38px; height: 38px; border-radius: 9px; flex-shrink: 0;
       background: linear-gradient(135deg,rgba(201,151,74,.15),rgba(201,151,74,.04));
       border: 1px solid rgba(201,151,74,.22);
       display: flex; align-items: center; justify-content: center;
-      overflow: visible; position: relative;
-      img { width: 36px; height: 36px; object-fit: contain; border-radius: 8px; }
+      position: relative;
+      img { width: 32px; height: 32px; object-fit: contain; border-radius: 7px; }
     }
     .brand-mark-ring {
-      position: absolute; inset: -4px; border-radius: 15px;
-      border: 1px solid rgba(201,151,74,.15); pointer-events: none;
+      position: absolute; inset: -3px; border-radius: 12px;
+      border: 1px solid rgba(201,151,74,.12); pointer-events: none;
     }
-    .b-name { display: block; font-family: var(--f-head); font-weight: 800; font-size: .9rem; line-height: 1.1; }
+    .b-name { display: block; font-family: var(--f-head); font-weight: 800; font-size: .84rem; line-height: 1.15; white-space: nowrap; }
     .bn-coral { color: #F0674A; }
-    .bn-dark  { color: #1A1A1A; }
-    .b-tag  { display: block; font-family: var(--f-mono); font-size: .55rem; color: rgba(201,151,74,.55); letter-spacing: .16em; text-transform: uppercase; margin-top: 2px; }
+    .bn-dark  { color: var(--ghost); }
+    .b-tag { display: block; font-family: var(--f-mono); font-size: .5rem; color: rgba(201,151,74,.5); letter-spacing: .14em; text-transform: uppercase; margin-top: 1px; white-space: nowrap; }
 
+    /* Nav links - compact, no wrap */
     .links {
       display: flex; gap: 0; list-style: none; padding: 0; margin: 0 auto;
+      flex-wrap: nowrap; overflow: hidden;
       a {
-        display: flex; align-items: center; gap: 5px;
-        padding: 9px 14px; border-radius: 6px;
-        font-family: var(--f-head); font-weight: 600; font-size: .8rem;
-        color: rgba(237,233,225,.45); letter-spacing: .015em;
+        display: flex; align-items: center; gap: 4px;
+        padding: 8px 11px; border-radius: 6px;
+        font-family: var(--f-head); font-weight: 600; font-size: .74rem;
+        color: rgba(237,233,225,.42); letter-spacing: .01em;
         cursor: pointer; transition: all .22s ease; position: relative;
+        white-space: nowrap;
         .lbl { position: relative; z-index: 1; }
-        .dot { display: flex; align-items: center; i { color: var(--gold); font-size: .6rem; } }
         &::after {
-          content: ''; position: absolute; bottom: 5px; left: 14px; right: 14px;
+          content: ''; position: absolute; bottom: 4px; left: 11px; right: 11px;
           height: 1px; background: linear-gradient(90deg, var(--gold), var(--coral));
           transform: scaleX(0); transform-origin: left; transition: transform .24s ease;
         }
@@ -181,80 +186,103 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
       }
     }
 
-    .nav-actions { display: flex; align-items: center; gap: 14px; }
+    /* Actions */
+    .nav-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; }
     .nav-status {
-      display: flex; align-items: center; gap: 7px;
-      font-family: var(--f-mono); font-size: .6rem; color: var(--ghost-d);
-      letter-spacing: .08em; text-transform: uppercase; white-space: nowrap;
+      display: flex; align-items: center; gap: 6px;
+      font-family: var(--f-mono); font-size: .56rem; color: var(--ghost-d);
+      letter-spacing: .07em; text-transform: uppercase; white-space: nowrap;
     }
     .ns-dot {
-      width: 7px; height: 7px; border-radius: 50%;
-      background: #2ECC71; flex-shrink: 0;
-      box-shadow: 0 0 0 3px rgba(46,204,113,.2);
-      animation: blink 2.4s ease-in-out infinite;
+      width: 6px; height: 6px; border-radius: 50%; background: #2ECC71; flex-shrink: 0;
+      box-shadow: 0 0 0 2px rgba(46,204,113,.2); animation: blink 2.4s ease-in-out infinite;
     }
-    .nav-cta { font-size: .74rem; padding: 11px 24px; }
+    .nav-cta { font-size: .7rem !important; padding: 10px 20px !important; white-space: nowrap; }
 
+    /* Burger */
     .burger {
-      display: none; flex-direction: column; gap: 5px;
+      display: none; flex-direction: column; gap: 4px;
       background: none; border: 1px solid rgba(201,151,74,.2);
-      border-radius: 7px; cursor: pointer; padding: 9px 10px; margin-left: 4px;
+      border-radius: 6px; cursor: pointer; padding: 8px 9px; margin-left: 4px; flex-shrink: 0;
       span {
-        display: block; width: 18px; height: 1.5px;
+        display: block; width: 16px; height: 1.5px;
         background: rgba(237,233,225,.75); border-radius: 2px; transition: all .3s;
       }
-      &.open span:nth-child(1){ transform: rotate(45deg) translate(4.5px,4.5px); }
+      &.open span:nth-child(1){ transform: rotate(45deg) translate(4px,4px); }
       &.open span:nth-child(2){ opacity: 0; transform: scaleX(0); }
-      &.open span:nth-child(3){ transform: rotate(-45deg) translate(4.5px,-4.5px); }
+      &.open span:nth-child(3){ transform: rotate(-45deg) translate(4px,-4px); }
     }
 
     /* ── Drawer ── */
     .drawer {
-      position: fixed; top: 0; right: 0; bottom: 0; width: 320px;
+      position: fixed; top: 0; right: 0; bottom: 0; width: 300px;
       background: var(--obsidian-m); border-left: 1px solid rgba(201,151,74,.1);
-      padding: 28px 24px; z-index: 902;
+      padding: 24px 20px; z-index: 902;
       display: flex; flex-direction: column; gap: 6px;
       transform: translateX(100%); transition: transform .38s cubic-bezier(.4,0,.2,1);
       &.open { transform: none; box-shadow: -32px 0 80px rgba(0,0,0,.6); }
     }
-    .dr-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 16px; }
-    .dr-brand { display: flex; align-items: center; gap: 10px; }
-    .dr-logo { height: 38px; width: 38px; object-fit: contain; border-radius: 9px; background: var(--gold-dim); padding: 3px; }
-    .dr-name { font-family: var(--f-head); font-weight: 700; font-size: .85rem; }
-    .dr-tag  { font-family: var(--f-mono); font-size: .56rem; color: rgba(201,151,74,.5); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
-    .dr-close { background: none; border: 1px solid rgba(255,255,255,.08); border-radius: 7px; cursor: pointer; color: rgba(237,233,225,.4); padding: 7px 9px; font-size: .86rem; transition: all .2s; &:hover{color:var(--ghost);border-color:rgba(255,255,255,.2)} }
+    .dr-top { display: flex; align-items: center; justify-content: space-between; margin-bottom: 14px; }
+    .dr-brand { display: flex; align-items: center; gap: 9px; }
+    .dr-logo { height: 34px; width: 34px; object-fit: contain; border-radius: 8px; background: #fff; padding: 2px; }
+    .dr-name { font-family: var(--f-head); font-weight: 700; font-size: .82rem; color: var(--ghost); }
+    .dr-tag  { font-family: var(--f-mono); font-size: .54rem; color: rgba(201,151,74,.5); letter-spacing: .1em; text-transform: uppercase; margin-top: 2px; }
+    .dr-close { background: none; border: 1px solid rgba(255,255,255,.08); border-radius: 6px; cursor: pointer; color: rgba(237,233,225,.4); padding: 6px 8px; font-size: .82rem; transition: all .2s; &:hover{color:var(--ghost);border-color:rgba(255,255,255,.2)} }
     .dr-status {
-      display: flex; align-items: center; gap: 8px;
-      background: rgba(46,204,113,.06); border: 1px solid rgba(46,204,113,.15);
-      border-radius: 8px; padding: 9px 14px; margin-bottom: 10px;
-      font-family: var(--f-mono); font-size: .62rem; color: rgba(46,204,113,.8); letter-spacing: .07em;
+      display: flex; align-items: center; gap: 7px;
+      background: rgba(46,204,113,.06); border: 1px solid rgba(46,204,113,.14);
+      border-radius: 8px; padding: 8px 13px; margin-bottom: 8px;
+      font-family: var(--f-mono); font-size: .6rem; color: rgba(46,204,113,.75); letter-spacing: .07em;
     }
     .dr-links { display: flex; flex-direction: column; gap: 2px; flex: 1;
       a {
         display: flex; align-items: center; justify-content: space-between;
-        padding: 13px 16px; border-radius: 8px; cursor: pointer;
-        font-family: var(--f-head); font-weight: 600; font-size: .9rem;
-        color: rgba(237,233,225,.55); border: 1px solid transparent;
-        transition: all .22s;
-        .dla-left { display: flex; flex-direction: column; gap: 2px; }
-        small { font-family: var(--f-mono); font-size: .56rem; color: var(--ghost-d); letter-spacing: .08em; text-transform: uppercase; }
-        i { font-size: .78rem; opacity: 0; transform: translate(-4px,2px); transition: all .22s; }
+        padding: 12px 14px; border-radius: 8px; cursor: pointer;
+        font-family: var(--f-head); font-weight: 600; font-size: .88rem;
+        color: rgba(237,233,225,.5); border: 1px solid transparent;
+        transition: all .22s; text-decoration: none;
+        .dla-left { display: flex; flex-direction: column; gap: 1px; }
+        small { font-family: var(--f-mono); font-size: .54rem; color: var(--ghost-d); letter-spacing: .08em; text-transform: uppercase; }
+        i { font-size: .76rem; opacity: 0; transform: translate(-4px,2px); transition: all .22s; }
         &:hover { color: var(--gold); border-color: rgba(201,151,74,.12); background: rgba(201,151,74,.05); i{opacity:1;transform:none} }
       }
     }
-    .dr-footer { border-top: 1px solid rgba(255,255,255,.06); padding-top: 20px; display: flex; flex-direction: column; gap: 14px; }
+    .dr-footer { border-top: 1px solid rgba(255,255,255,.06); padding-top: 16px; display: flex; flex-direction: column; gap: 12px; }
     .dr-contact {
-      display: flex; flex-direction: column; gap: 7px;
-      span { display: flex; align-items: center; gap: 8px; font-family: var(--f-mono); font-size: .62rem; color: var(--ghost-d); letter-spacing: .06em; i { color: var(--gold); font-size: .7rem; } }
+      display: flex; flex-direction: column; gap: 6px;
+      span { display: flex; align-items: center; gap: 7px; font-family: var(--f-mono); font-size: .6rem; color: var(--ghost-d); letter-spacing: .05em; i { color: var(--gold); font-size: .68rem; } }
     }
 
     .veil { position: fixed; inset: 0; background: rgba(0,0,0,.7); z-index: 899; opacity: 0; visibility: hidden; transition: all .35s; pointer-events: none; backdrop-filter: blur(4px); &.on{opacity:1;visibility:visible;pointer-events:auto} }
 
-    @media(max-width:1099px) {
+    /* ── Breakpoints ── */
+    @media(max-width:1199px) {
       .links { display: none !important; }
       .burger { display: flex; }
+      .nav-status { display: none !important; }
     }
-    @media(max-width:767px) { .ticker-bar { display: none; } .nav { top: 0; } }
+    @media(min-width:1200px) and (max-width:1400px) {
+      .links a { padding: 7px 9px; font-size: .7rem; }
+      .nav-status { display: none; }
+    }
+    /* Mobile */
+    @media(max-width:767px) {
+      .ticker-bar { display: none; }
+      .nav { top: 0; padding: 10px 0; }
+      .nav.pinned { padding: 10px 0; }
+      .nav-row { gap: 0; justify-content: space-between; }
+      /* Logo smaller on mobile */
+      .brand-mark {
+        width: 34px; height: 34px; border-radius: 8px;
+        img { width: 28px; height: 28px; }
+      }
+      .brand-mark-ring { display: none; }
+      .b-name { font-size: .78rem; }
+      .b-tag { display: none; }
+      /* Push burger to far right */
+      .nav-actions { margin-left: auto; }
+      .burger { display: flex; margin-left: 8px; }
+    }
   `]
 })
 export class NavbarComponent {
@@ -267,13 +295,13 @@ export class NavbarComponent {
     { icon: 'bi bi-stars', text: 'New: Vyapar Ledger — Free Download' },
   ];
   links = [
-    { id: 'hero',      label: 'Home',      sub: 'Welcome',       badge: false },
-    { id: 'about',     label: 'About',     sub: 'Our story',     badge: false },
-    { id: 'product',   label: 'Products',  sub: 'Vyapar Ledger', badge: false },
-    { id: 'services',  label: 'Services',  sub: 'What we do',    badge: false },
-    { id: 'portfolio', label: 'Portfolio', sub: 'Our work',       badge: false },
-    { id: 'team',      label: 'Team',      sub: 'The people',    badge: false },
-    { id: 'contact',   label: 'Contact',   sub: 'Get in touch',  badge: false },
+    { id: 'hero',       label: 'Home',      sub: 'Welcome',       badge: false },
+    { id: 'our-story',  label: 'Our Story', sub: 'Who we are',    badge: false },
+    { id: 'services',   label: 'Services',  sub: 'What we do',    badge: false },
+    { id: 'process',    label: 'Process',   sub: 'How we work',   badge: false },
+    { id: 'portfolio',  label: 'Portfolio', sub: 'Our work',      badge: false },
+    { id: 'team',       label: 'Team',      sub: 'The people',    badge: false },
+    { id: 'contact',    label: 'Contact',   sub: 'Get in touch',  badge: false },
   ];
   constructor(@Inject(PLATFORM_ID) private pid: object) {}
   @HostListener('window:scroll') onScroll() {
