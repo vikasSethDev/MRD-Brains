@@ -30,7 +30,7 @@ import { CommonModule, isPlatformBrowser } from '@angular/common';
               <div class="brand-mark-ring"></div>
             </div>
             <div class="brand-text">
-              <span class="b-name"><span class="bn-coral">Mr</span><span class="bn-dark">D Brains</span></span>
+              <span class="b-name"><span class="bn-coral">Mr</span><span class="bn-light">D Brains</span></span>
               <span class="b-tag">Technology · Est. 2022</span>
             </div>
           </a>

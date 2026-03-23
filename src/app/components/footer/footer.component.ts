@@ -42,7 +42,7 @@ import { FormsModule } from '@angular/forms';
                 <img src="assets/logo.png" alt="MrD Brains Technology">
               </div>
               <div>
-                <div class="ftl-name"><span class="bn-coral">Mr</span><span class="bn-dark">D Brains</span></div>
+                <div class="ftl-name"><span class="bn-coral">Mr</span><span class="bn-light">D Brains</span></div>
                 <div class="ftl-sub">Technology</div>
               </div>
             </div>
