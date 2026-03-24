@@ -51,7 +51,7 @@ import { FormsModule } from '@angular/forms';
               solutions, AI-powered automation, and enterprise IT infrastructure since 2022.
             </p>
             <div class="ft-badges">
-              <div class="ftb-item"><i class="bi bi-shield-fill-check"></i> ISO-grade Quality</div>
+              <div class="ftb-item"><i class="bi bi-shield-fill-check"></i> Industry-standard delivery practices</div>
               <div class="ftb-item"><i class="bi bi-geo-alt-fill"></i> Made in India</div>
               <div class="ftb-item" style="grid-column:1/-1"><i class="bi bi-whatsapp"></i> WhatsApp AI — Now Live</div>
             </div>

@@ -16,12 +16,13 @@ import { RouterLink } from '@angular/router';
           <div>
             <div class="eyebrow">Investment</div>
             <h2 class="sec-h2">Transparent <em>Pricing</em></h2>
+            
           </div>
+          
           <p class="sec-lead" style="max-width:400px">
-            No hidden fees. No surprise invoices. Every engagement starts with a free
-            discovery call — so we both know exactly what we're building before
-            a single rupee changes hands.
-          </p>
+  Every project is tailored to your business. Pricing depends on scope,
+  integrations, and complexity — we provide a fixed quote after discovery.
+</p>
         </div>
 
         <!-- Trust bar -->
@@ -47,7 +48,7 @@ import { RouterLink } from '@angular/router';
             <div class="pc-price-row">
               <div class="pc-price"><sup>₹</sup>{{ p.price }}</div>
               <div class="pc-price-meta">
-                <span class="ppm-period">starting price</span>
+                <span class="ppm-period">project investment</span>
                 <span class="ppm-gst">+ GST as applicable</span>
               </div>
             </div>
@@ -79,30 +80,7 @@ import { RouterLink } from '@angular/router';
           </div>
         </div>
 
-        <!-- Comparison table -->
-        <div class="compare-wrap" data-aos="fade-up" data-aos-delay="60">
-          <div class="compare-header">
-            <div class="ch-title">Full Plan Comparison</div>
-            <div class="ch-subtitle">See exactly what you get at each level</div>
-          </div>
-          <div class="compare-table-scroll">
-            <div class="compare-table">
-              <div class="ct-head">
-                <div class="cth-feat">Feature</div>
-                <div class="cth-plan" *ngFor="let p of plans" [class.hi]="p.featured">{{ p.tier }}</div>
-              </div>
-              <div class="ct-row" *ngFor="let r of compareRows; let i=index" [class.alt]="i%2===0">
-                <div class="ctr-feat">{{ r.label }}</div>
-                <div class="ctr-val" *ngFor="let v of r.vals; let j=index" [class.hi]="plans[j].featured">
-                  <i class="bi bi-check-lg" *ngIf="v===true"  style="color:var(--gold)"></i>
-                  <i class="bi bi-x-lg"     *ngIf="v===false" style="color:rgba(255,255,255,.14)"></i>
-                  <span *ngIf="v!==true && v!==false">{{ v }}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
+       
         <!-- FAQ -->
         <div class="pricing-faq" data-aos="fade-up">
           <div class="pf-header">
@@ -356,82 +334,106 @@ import { RouterLink } from '@angular/router';
 })
 export class PricingComponent {
   trustItems = [
-    { icon: 'bi bi-telephone-fill',    text: 'Free 30-min discovery call' },
+    { icon: 'bi bi-telephone-fill', text: 'Free 30-min discovery call' },
     { icon: 'bi bi-file-earmark-text', text: 'Detailed proposal within 48 hrs' },
     { icon: 'bi bi-shield-fill-check', text: 'NDA signed before kickoff' },
-    { icon: 'bi bi-arrow-repeat',      text: 'Agile delivery with weekly updates' },
-    { icon: 'bi bi-patch-check-fill',  text: '90-day post-launch support' },
+    { icon: 'bi bi-arrow-repeat', text: 'Agile delivery with weekly updates' },
+    { icon: 'bi bi-patch-check-fill', text: '90-day post-launch support' },
   ];
 
   plans = [
     {
-      tier: 'Starter', price: '9,999', featured: false,
-      cta: 'Get Started', icon: 'bi bi-rocket-takeoff',
-      bestFor: 'Small Businesses', delivery: '3–6 weeks',
-      desc: 'A focused, single-purpose solution that gets your business digital without overcomplicating things.',
+      tier: 'MVP Build',
+      price: '50K+',
+      featured: false,
+      cta: 'Get Estimate',
+      icon: 'bi bi-rocket-takeoff',
+      bestFor: 'Startups & Idea Validation',
+      delivery: '3–6 weeks',
+      desc: 'Launch a working product fast. Perfect for validating ideas and getting your first users.',
       feats: [
-        { on: true,  text: 'Single web or desktop application', hint: 'Up to 10 core screens' },
-        { on: true,  text: 'Up to 20 hours post-launch support', hint: null },
-        { on: true,  text: 'Basic cloud hosting setup',          hint: 'Azure / shared hosting' },
-        { on: true,  text: 'Free 30-min discovery call',         hint: null },
-        { on: false, text: 'Custom API / ERP integrations',       hint: null },
-        { on: false, text: 'Dedicated account manager',          hint: null },
+        { on: true, text: 'Core business workflow system', hint: 'Billing / CRM / basic automation' },
+        { on: true, text: 'Clean & scalable architecture', hint: null },
+        { on: true, text: 'Basic cloud deployment', hint: 'Azure / VPS' },
+        { on: true, text: 'Free discovery & planning call', hint: null },
+        { on: false, text: 'Advanced integrations (ERP / APIs)', hint: null },
+        { on: false, text: 'Dedicated account manager', hint: null },
       ],
     },
     {
-      tier: 'Professional', price: '24,999', featured: true,
-      cta: 'Choose This Plan', icon: 'bi bi-lightning-charge-fill',
-      bestFor: 'Growing SMEs', delivery: '6–14 weeks',
-      desc: 'Our most-chosen plan. Multi-module delivery with hands-on support and a dedicated point of contact.',
+      tier: 'Business System',
+      price: '1.5L+',
+      featured: true,
+      cta: 'Get Exact Quote',
+      icon: 'bi bi-lightning-charge-fill',
+      bestFor: 'SMEs & Growing Businesses',
+      delivery: '6–14 weeks',
+      desc: 'End-to-end system to automate operations, reduce manual work, and improve efficiency.',
       feats: [
-        { on: true, text: 'Multi-module application',         hint: 'Unlimited screens & modules' },
-        { on: true, text: 'Up to 80 hours of support',        hint: '3 months post-launch' },
-        { on: true, text: 'Hosting, SSL & security updates',  hint: null },
-        { on: true, text: 'Free cloud architecture review',   hint: 'Azure / infrastructure' },
-        { on: true, text: 'Dedicated account manager',        hint: 'Direct WhatsApp access' },
-        { on: true, text: 'Priority turnaround on changes',   hint: '< 48 hr response' },
+        { on: true, text: 'Complete business automation system', hint: 'ERP / CRM / dashboards' },
+        { on: true, text: 'WhatsApp automation integration', hint: 'Reminders, alerts, workflows' },
+        { on: true, text: 'Secure cloud hosting + backups', hint: null },
+        { on: true, text: 'Performance & scalability ready', hint: null },
+        { on: true, text: 'Dedicated developer support', hint: 'Direct WhatsApp access' },
+        { on: true, text: 'Priority updates & changes', hint: '< 48 hr turnaround' },
       ],
     },
     {
-      tier: 'Enterprise', price: '59,999', featured: false,
-      cta: "Let's Talk", icon: 'bi bi-building-fill',
-      bestFor: 'Enterprises & Platforms', delivery: '12–24 weeks',
-      desc: 'Fully bespoke large-scale platforms with enterprise infrastructure, security, and year-round support.',
+      tier: 'Custom Platform',
+      price: '5L+',
+      featured: false,
+      cta: "Let's Discuss",
+      icon: 'bi bi-building-fill',
+      bestFor: 'Enterprises & SaaS Platforms',
+      delivery: '12–24 weeks',
+      desc: 'Fully custom, scalable platforms with enterprise-grade architecture, security, and long-term support.',
       feats: [
-        { on: true, text: 'Full-scale custom platform',      hint: 'Multi-tenant / SaaS capable' },
-        { on: true, text: 'Unlimited support hours',         hint: '12 months post-launch' },
-        { on: true, text: 'Dedicated Azure infrastructure',  hint: 'Managed & monitored 24/7' },
-        { on: true, text: 'Advanced security hardening',     hint: 'Audit trail + compliance' },
-        { on: true, text: '24/7 dedicated support hotline',  hint: 'Direct engineer access' },
-        { on: true, text: 'SLA-backed 99.9% uptime',        hint: 'Contractual guarantee' },
+        { on: true, text: 'Full-scale SaaS / enterprise platform', hint: 'Multi-tenant capable' },
+        { on: true, text: 'Advanced integrations & APIs', hint: '3rd-party + internal systems' },
+        { on: true, text: 'Dedicated cloud infrastructure', hint: 'Azure / AWS' },
+        { on: true, text: 'High-level security & compliance', hint: null },
+        { on: true, text: '24/7 priority support', hint: null },
+        { on: true, text: 'SLA-backed uptime guarantee', hint: '99.9%' },
       ],
     },
   ];
 
   compareRows: { label: string; vals: any[] }[] = [
-    { label: 'Applications / Modules',   vals: ['1 app',     'Multi-module', 'Unlimited']  },
-    { label: 'Post-launch support',       vals: ['20 hrs',    '80 hrs',       'Unlimited']  },
-    { label: 'Hosting included',          vals: [true,        true,           true]          },
-    { label: 'Custom API integrations',   vals: [false,       true,           true]          },
-    { label: 'Dedicated account manager', vals: [false,       true,           true]          },
-    { label: 'SLA uptime guarantee',      vals: [false,       false,          true]          },
-    { label: 'Source code handover',      vals: [true,        true,           true]          },
-    { label: 'NDA & IP protection',       vals: [true,        true,           true]          },
-    { label: 'Typical delivery',          vals: ['3–6 wks',   '6–14 wks',    '12–24 wks']  },
+    { label: 'Applications / Modules', vals: ['1 app', 'Multi-module', 'Unlimited'] },
+    { label: 'Post-launch support', vals: ['20 hrs', '80 hrs', 'Unlimited'] },
+    { label: 'Hosting included', vals: [true, true, true] },
+    { label: 'Custom API integrations', vals: [false, true, true] },
+    { label: 'Dedicated account manager', vals: [false, true, true] },
+    { label: 'SLA uptime guarantee', vals: [false, false, true] },
+    { label: 'Source code handover', vals: [true, true, true] },
+    { label: 'NDA & IP protection', vals: [true, true, true] },
+    { label: 'Typical delivery', vals: ['3–6 wks', '6–14 wks', '12–24 wks'] },
   ];
 
   faqs: any[] = [
-    { open: false, q: 'Are these fixed prices or estimates?',
-      a: 'These are starting prices. Every project is scoped individually — we provide a fixed-price proposal after the discovery call, so you know the exact cost before committing. No surprises.' },
-    { open: false, q: 'Do you sign NDAs before discussing my project?',
-      a: 'Absolutely. We sign a mutual NDA before any detailed discussion. Your idea, business logic, and data remain completely confidential throughout the engagement.' },
-    { open: false, q: 'What happens if the project scope changes mid-way?',
-      a: 'We work on fixed-scope agreements. If you request scope changes mid-project, we agree on a change order first — you\'ll always know the cost impact before we proceed.' },
-    { open: false, q: 'Do you offer milestone-based or EMI payments?',
-      a: 'Yes. We typically split into 3 milestones: 30% on kickoff, 40% at mid-delivery, 30% on final handover. Flexible arrangements are available for enterprise projects.' },
-    { open: false, q: 'Who owns the source code after delivery?',
-      a: 'You do — 100%. On final payment, full source code, documentation, and all IP are formally transferred to you. We retain absolutely no rights.' },
-    { open: false, q: 'Can I start with Starter and scale up later?',
-      a: 'Yes. Many clients start with Starter to validate their idea, then upgrade. We build everything with scalability in mind — upgrading is a continuation, not a rebuild.' },
+    {
+      open: false, q: 'Are these fixed prices or estimates?',
+      a: 'These are starting prices. Every project is scoped individually — we provide a fixed-price proposal after the discovery call, so you know the exact cost before committing. No surprises.'
+    },
+    {
+      open: false, q: 'Do you sign NDAs before discussing my project?',
+      a: 'Absolutely. We sign a mutual NDA before any detailed discussion. Your idea, business logic, and data remain completely confidential throughout the engagement.'
+    },
+    {
+      open: false, q: 'What happens if the project scope changes mid-way?',
+      a: 'We work on fixed-scope agreements. If you request scope changes mid-project, we agree on a change order first — you\'ll always know the cost impact before we proceed.'
+    },
+    {
+      open: false, q: 'Do you offer milestone-based or EMI payments?',
+      a: 'Yes. We typically split into 3 milestones: 30% on kickoff, 40% at mid-delivery, 30% on final handover. Flexible arrangements are available for enterprise projects.'
+    },
+    {
+      open: false, q: 'Who owns the source code after delivery?',
+      a: 'You do — 100%. On final payment, full source code, documentation, and all IP are formally transferred to you. We retain absolutely no rights.'
+    },
+    {
+      open: false, q: 'Can I start with Starter and scale up later?',
+      a: 'Yes. Many clients start with Starter to validate their idea, then upgrade. We build everything with scalability in mind — upgrading is a continuation, not a rebuild.'
+    },
   ];
 }

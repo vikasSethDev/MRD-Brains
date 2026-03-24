@@ -288,7 +288,7 @@ export class NavbarComponent {
   pinned = false; open = false; cur = '/';
   tickers = [
     { icon: 'bi bi-geo-alt-fill',      text: 'Mumbai, Maharashtra — Khar East' },
-    { icon: 'bi bi-check-circle-fill', text: 'ISO-grade Delivery Standards' },
+    { icon: 'bi bi-check-circle-fill', text: 'Industry-standard delivery practices' },
     { icon: 'bi bi-whatsapp',          text: 'WhatsApp Automation & AI Solutions Now Available' },
     { icon: 'bi bi-telephone-fill',    text: '+91 937-240-1266' },
     { icon: 'bi bi-stars',             text: 'New: Vyapar Ledger — Free Download' },
