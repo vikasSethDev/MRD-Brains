@@ -61,7 +61,7 @@ declare const AOS: any;
     .ph-inner { max-width: 700px; margin: 0 auto; }
     .ph-title {
       font-family: var(--f-head); font-weight: 800;
-      font-size: clamp(2.2rem, 5vw, 3.8rem);
+      font-size: clamp(2.4rem, 5vw, 4rem);
       color: var(--ghost); line-height: 1.08;
       letter-spacing: -.03em; margin-bottom: 18px;
       em { color: var(--gold); font-style: italic; font-family: var(--f-display); font-weight: 300; font-size: 1.1em; }

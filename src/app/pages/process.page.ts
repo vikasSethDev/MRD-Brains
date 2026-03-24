@@ -59,7 +59,7 @@ declare const AOS: any;
       font-size: clamp(2.4rem, 5vw, 4rem);
       color: var(--ghost); line-height: 1.08;
       letter-spacing: -.03em; margin-bottom: 18px;
-      em { color: #2ECC71; font-style: italic; font-family: var(--f-display); font-weight: 300; font-size: 1.1em; }
+      em { color: var(--gold); font-style: italic; font-family: var(--f-display); font-weight: 300; font-size: 1.1em; }
     }
     .ph-desc {
       font-size: 1rem; font-weight: 300; color: var(--ghost-d);
