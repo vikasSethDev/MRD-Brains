@@ -278,7 +278,7 @@ export class TestimonialsComponent {
       text: 'Highly responsive, technically brilliant. The ERP system they built has transformed our operations entirely. What used to take hours now takes minutes. ROI was clearly visible within the very first month.',
     },
     {
-      init: 'SR', color: 'linear-gradient(135deg,#25D366,#128C7E)',
+      init: 'SR', color: 'linear-gradient(135deg,#F0674A,#C9974A)',
       name: 'Sneha Rathi', role: 'Founder', company: 'ArtisanMart Mumbai',
       service: 'WhatsApp Automation',
       result: '₹1.2L recovered from abandoned carts monthly',
