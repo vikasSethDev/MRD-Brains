@@ -52,7 +52,7 @@ import { FormsModule } from '@angular/forms';
             </p>
             <div class="ft-badges">
               <div class="ftb-item"><i class="bi bi-shield-fill-check"></i> ISO-grade Quality</div>
-              <div class="ftb-item"><i class="bi bi-geo-alt-fill"></i> Made in Mumbai</div>
+              <div class="ftb-item"><i class="bi bi-geo-alt-fill"></i> Made in India</div>
               <div class="ftb-item" style="grid-column:1/-1"><i class="bi bi-whatsapp"></i> WhatsApp AI — Now Live</div>
             </div>
             <div class="ft-socials">
@@ -111,7 +111,7 @@ import { FormsModule } from '@angular/forms';
           </div>
           <div class="ftb-right">
             <span class="ftbr-tag">Designed &amp; Engineered in</span>
-            <span class="ftbr-city">Mumbai <i class="bi bi-heart-fill"></i></span>
+            <span class="ftbr-city">India <i class="bi bi-heart-fill"></i></span>
           </div>
         </div>
       </div>

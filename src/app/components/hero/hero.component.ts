@@ -27,7 +27,7 @@ import { RouterLink } from '@angular/router';
               <div class="he-flag">
                 <span class="he-pulse"></span>
                 <i class="bi bi-geo-alt-fill"></i>
-                <span>Khar East, Mumbai</span>
+                <span>Mumbai</span>
               </div>
               <div class="he-div"></div>
               <div class="he-rating">
@@ -97,7 +97,7 @@ import { RouterLink } from '@angular/router';
                   <div class="pct-stars">
                     <i class="bi bi-star-fill" *ngFor="let s of [1,2,3,4,5]"></i>
                   </div>
-                  <span>Trusted by <strong>5+ Mumbai businesses</strong></span>
+                  <span>Trusted by <strong>5+ Indian businesses</strong></span>
                 </div>
               </div>
               <div class="proof-divider"></div>

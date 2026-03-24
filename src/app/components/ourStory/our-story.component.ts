@@ -45,11 +45,11 @@ import { RouterLink } from '@angular/router';
               <div class="fc-quote">
                 <div class="fcq-mark">"</div>
                 <p>
-                  I started MrD Brains because I saw too many Mumbai businesses
-                  paying for generic software that never fit. Every business
-                  is different — their software should be too.
+                  MrD stands for Mr Developer's Brains. We are developers.
+                  We will always be developers. And we put every bit of that
+                  into every project we take on.
                 </p>
-                <div class="fcq-sig">— Vishal Seth, 2022</div>
+                <div class="fcq-sig">— Vishal Seth, Founder & CEO, 2022</div>
               </div>
               <div class="fc-divider"></div>
               <!-- Mini stats -->
@@ -78,49 +78,83 @@ import { RouterLink } from '@angular/router';
           <div class="story-right" data-aos="fade-left" data-aos-delay="100">
             <div class="eyebrow">The Story Behind MrD Brains</div>
             <h2 class="sec-h2">
-              Not Just a Software Company.<br>
-              A <em>Promise</em> to Mumbai's Businesses.
+              The Name Says<br>
+              <em>Everything.</em>
             </h2>
+
+            <!-- Name breakdown card -->
+            <div class="name-card" data-aos="fade-up">
+              <div class="nc-row">
+                <div class="nc-part">
+                  <div class="nc-letters">Mr</div>
+                  <div class="nc-meaning">Mister</div>
+                  <div class="nc-hint">Respect. Ownership.</div>
+                </div>
+                <div class="nc-plus">+</div>
+                <div class="nc-part featured">
+                  <div class="nc-letters">D</div>
+                  <div class="nc-meaning">Developer's</div>
+                  <div class="nc-hint">The craft. The code.</div>
+                </div>
+                <div class="nc-plus">+</div>
+                <div class="nc-part">
+                  <div class="nc-letters">Brains</div>
+                  <div class="nc-meaning">Intelligence</div>
+                  <div class="nc-hint">Strategy. Thinking.</div>
+                </div>
+              </div>
+              <div class="nc-full">
+                <i class="bi bi-quote"></i>
+                Mr Developer's Brains — because the founders are developers,
+                and developers think differently.
+              </div>
+            </div>
 
             <div class="story-body">
               <p class="sb-lead">
-                In 2022, Vishal Seth sat across from a small business owner in Khar East
-                who had just paid ₹80,000 for a software system that didn't work.
-                It wasn't built for his business. It wasn't built for India.
-                It was a template someone had sold him as a solution.
+                When Vishal Seth and Adarsh Dubey named their studio in 2022,
+                they weren't being clever. They were being honest.
+                <strong>MrD Brains = Mr Developer's Brains</strong> — two developers
+                who believed that the best software comes not from salespeople,
+                not from project managers, but from people who actually
+                write the code.
               </p>
 
               <p class="sb-p">
-                That conversation lit something. Vishal had spent years in the technology
-                industry watching the same story repeat — ambitious Mumbai entrepreneurs
-                getting handed cookie-cutter software by agencies that didn't listen,
-                didn't care, and disappeared after payment.
-              </p>
-
-              <p class="sb-p">
-                He co-founded MrD Brains Technology with Adarsh Dubey with one
-                unwavering belief: <strong>every business deserves software that was
-                actually built for them.</strong> Not adapted. Not adjusted.
-                Built — from scratch — around their unique operations, their team,
-                their customers, their growth plans.
+                Both founders are developers first. Vishal built systems. Adarsh
+                architected them. They spent years inside the industry watching
+                the same frustrating pattern — Mumbai businesses paying lakhs
+                for software built by agencies where the developers were the last
+                people in the room. Requirements got lost in translation.
+                Deadlines got missed. Software got delivered that no one
+                actually wanted to use.
               </p>
 
               <!-- Values callout -->
               <div class="story-callout">
-                <i class="bi bi-heart-fill"></i>
+                <i class="bi bi-cpu-fill"></i>
                 <p>
-                  Three years later, that belief drives every project we take on.
-                  We don't chase volume. We choose the clients we can genuinely help,
-                  and we go all in. That's the MrD Brains way.
+                  So they decided: what if the people who talk to the client
+                  are the same people who build the product? What if the
+                  <em>developer's brain</em> was in the room from day one?
                 </p>
               </div>
 
               <p class="sb-p">
-                Today, from our studio in Khar East, our team of engineers and designers
-                builds custom .NET, React and Angular platforms, AI-powered WhatsApp
-                automation, cloud infrastructure — and in 2025, launched
-                <strong>Vyapar Ledger</strong>, our own SaaS product built specifically
-                for India's jewellery trade.
+                That's the MrD Brains model. Every project is led by a developer.
+                Every requirement is reviewed by a developer. Every decision
+                — timeline, architecture, technology — is made by someone who
+                will personally write the code. <strong>No middlemen.
+                No lost-in-translation moments. Just developer brains,
+                applied directly to your problem.</strong>
+              </p>
+
+              <p class="sb-p">
+                Three years on, from their studio in Khar East, the team has
+                shipped 15+ projects across Mumbai — ERP systems, WhatsApp AI bots,
+                LMS platforms, jewellery management SaaS — all built the
+                MrD Brains way. The name on the door is a daily reminder
+                of the standard they hold themselves to.
               </p>
             </div>
 
@@ -270,6 +304,39 @@ import { RouterLink } from '@angular/router';
     }
 
     /* ── Story Right ── */
+    /* Name breakdown card */
+    .name-card {
+      background: linear-gradient(135deg, var(--obsidian-l), var(--obsidian-m));
+      border: 1px solid rgba(201,151,74,.22); border-radius: 18px;
+      padding: 28px; margin-bottom: 32px; position: relative; overflow: hidden;
+      &::before { content:''; position:absolute; top:0; left:0; right:0; height:1px; background: linear-gradient(90deg,transparent,rgba(201,151,74,.5),transparent); }
+    }
+    .nc-row {
+      display: flex; align-items: center; justify-content: center;
+      gap: 12px; margin-bottom: 20px; flex-wrap: wrap;
+    }
+    .nc-part {
+      text-align: center; padding: 14px 18px; flex: 1; min-width: 90px;
+      background: rgba(255,255,255,.03); border: 1px solid rgba(255,255,255,.07);
+      border-radius: 12px; transition: all .25s;
+      &:hover { border-color: rgba(201,151,74,.2); background: var(--gold-dim); }
+      &.featured { background: var(--gold-dim); border-color: var(--gold-ring); box-shadow: 0 4px 20px rgba(201,151,74,.12); }
+    }
+    .nc-letters {
+      font-family: var(--f-head); font-weight: 800;
+      font-size: 1.7rem; color: var(--ghost); line-height: 1; margin-bottom: 6px;
+      .nc-part.featured & { color: var(--gold); font-size: 2rem; }
+    }
+    .nc-meaning { font-family: var(--f-head); font-weight: 700; font-size: .76rem; color: var(--ghost-m); margin-bottom: 3px; }
+    .nc-hint    { font-family: var(--f-mono); font-size: .58rem; color: var(--ghost-d); letter-spacing: .08em; }
+    .nc-plus    { font-family: var(--f-head); font-weight: 800; font-size: 1.3rem; color: rgba(201,151,74,.3); flex-shrink: 0; }
+    .nc-full {
+      border-top: 1px solid rgba(255,255,255,.06); padding-top: 16px;
+      font-family: var(--f-display); font-style: italic; font-weight: 300;
+      font-size: .96rem; color: var(--ghost-m); line-height: 1.7;
+      i { color: var(--gold); font-size: 1rem; margin-right: 6px; vertical-align: middle; }
+    }
+
     .story-body { margin-bottom: 36px; }
     .sb-lead {
       font-family: var(--f-display); font-style: italic; font-weight: 300;
