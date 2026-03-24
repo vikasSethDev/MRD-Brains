@@ -28,6 +28,16 @@ export const routes: Routes = [
       import('./pages/contact.page').then(m => m.ContactPageComponent),
   },
   {
+    path: 'privacy',
+    loadComponent: () =>
+      import('./pages/privacy.page').then(m => m.PrivacyPageComponent),
+  },
+  {
+    path: 'terms',
+    loadComponent: () =>
+      import('./pages/terms.page').then(m => m.TermsPageComponent),
+  },
+  {
     path: '**',
     component: NotFoundComponent,
   },
