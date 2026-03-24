@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-footer',
-  standalone: true, imports: [CommonModule, FormsModule],
+  standalone: true, imports: [CommonModule, FormsModule, RouterLink],
   template: `
     <footer class="footer">
       <div class="noise"></div>
@@ -52,7 +53,7 @@ import { FormsModule } from '@angular/forms';
             </p>
             <div class="ft-badges">
               <div class="ftb-item"><i class="bi bi-shield-fill-check"></i> Industry-standard delivery practices</div>
-              <div class="ftb-item"><i class="bi bi-geo-alt-fill"></i> Made in India</div>
+              <div class="ftb-item"><i class="bi bi-geo-alt-fill"></i> Made in Mumbai</div>
               <div class="ftb-item" style="grid-column:1/-1"><i class="bi bi-whatsapp"></i> WhatsApp AI — Now Live</div>
             </div>
             <div class="ft-socials">
@@ -102,16 +103,14 @@ import { FormsModule } from '@angular/forms';
           <div class="ftb-left">
             <p>© 2025 <strong>MrD Brains Technology</strong>. All Rights Reserved.</p>
             <div class="ftb-links">
-              <a href="#">Privacy Policy</a>
+              <a routerLink="/privacy">Privacy Policy</a>
               <span>·</span>
-              <a href="#">Terms of Service</a>
-              <span>·</span>
-              <a href="#">Sitemap</a>
+              <a routerLink="/terms">Terms of Service</a>
             </div>
           </div>
           <div class="ftb-right">
             <span class="ftbr-tag">Designed &amp; Engineered in</span>
-            <span class="ftbr-city">India <i class="bi bi-heart-fill"></i></span>
+            <span class="ftbr-city">Mumbai <i class="bi bi-heart-fill"></i></span>
           </div>
         </div>
       </div>
